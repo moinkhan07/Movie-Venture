@@ -1,0 +1,120 @@
+#navbar{
+    width: 95%;
+    height: 60px;
+    box-shadow: rgba(255, 255, 255, 0.02) 0px 1px 3px 0px, rgba(255, 255, 255, 0.15) 0px 0px 0px 1px;
+    color: #FEA641;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 10px;
+}
+#leftNav{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#bottomNav{
+    width: 38%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#searchBar{
+    width: 88%;
+    height:90%;
+    padding-left: 10px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: white;
+    box-shadow: rgba(255, 255, 255, 0.02) 0px 1px 3px 0px, rgba(255, 255, 255, 0.15) 0px 0px 0px 1px;
+}
+#searchBtn{
+    width: 12%;
+    height: 95%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(76, 80, 81);
+}
+#searchBtn:hover{
+    background-color:rgb(122, 129, 131);
+}
+#searchBar::placeholder{
+    color: rgb(182, 179, 179);
+}
+#rightNav{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#rightNav .rightNavBtn{
+    width:30%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background-color:rgb(122, 129, 131);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#rightNav .rightNavBtn:hover{
+    background-color: rgb(82, 82, 82);
+    color: #FEA641;
+}
+#optionsMain{
+    width: 95%;
+    height: 50px;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+#optionsMain>button{
+    width: 3%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 20%;
+    border: 1px solid rgb(169, 155, 155);
+    position: relative;
+    z-index: 2
+}
+#options{
+    width: 94%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    position: relative;
+  z-index: 1; 
+}
+#options>p{
+    padding: 10px;
+    box-shadow: rgba(255, 255, 255, 0.02) 0px 1px 3px 0px, rgba(255, 255, 255, 0.15) 0px 0px 0px 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+}
+#options>p:hover{
+    background-color: rgb(82, 82, 82);
+    color: #FEA641;
+}
