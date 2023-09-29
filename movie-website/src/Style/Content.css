@@ -12,6 +12,7 @@
     height: 500px;
     cursor: pointer;
     border-radius: 10px;
+    position: relative;
     background-color: rgb(85, 85, 85);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
@@ -21,3 +22,39 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.movieDiv p{
+    width: 90%;
+    margin: auto;
+    background-color: transparent;
+    color: white;
+    margin-top: 15px;
+    font-size: 17px;
+    font-weight: lighter;
+}
+.movieDiv p:hover{
+    color: #FEA641;
+}
+.bookmarkMovie{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: transparent;
+}
+.movieDiv .bookmarkText{
+    position: absolute;
+    font-size: 13px;
+    padding: 4px;
+    background-color: red;
+    color: white;
+    width: auto;
+    border-radius: 3px;
+    right: 35px;
+    top: -10px;
+    display: none;
+}
+.movieDiv:hover .bookmarkText {
+    display: block;
+  }
