@@ -165,11 +165,11 @@ const MovieList = () => {
       imageUrl: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg"
     }
   ];
-  
+  let data = movieData.slice(0,20);
 
   return (
     <>
-      {movieData.map((movie, index) => (
+      {data.map((movie, index) => (
         <div key={index} className='movieDiv' >
             <button className="bookmarkMovie">
             <BookmarkIcon
