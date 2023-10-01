@@ -1,0 +1,66 @@
+#signUp{
+    width: 30%;
+    border: 1px solid transparent;
+  border-radius: 20px; 
+    margin: auto;
+   background-color: #fea641;
+}
+#signUp>input{
+  width: 95%;
+  padding: 10px 10px;
+  margin: 10px 10px;
+ color: #fea641;
+ border: 1px solid transparent;
+ border-radius: 10px;
+}
+#signUp>input::placeholder{
+    color: #fff;
+}
+#signUp>#submit{
+    width: 95%;
+    padding: 10px 10px;
+    margin: 10px;
+    font-size: large;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #fea641;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #313135;
+}
+#box{
+    width: 95%;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    margin: 10px 10px;
+    background-color: #fea641;
+}
+#box>P{
+color:#fff;
+text-align: center;
+border: 1px solid transparent;
+    border-radius: 10px;
+    margin-bottom: 20px;
+padding:10px 10px;
+}
+#signUp>#img{
+    height: 70px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin-left: 40%;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    width: 20%;
+}
+#signUp>h1{
+    color: black;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    width: 90%;
+    background-color: #fea641;
+    margin: 10px 10px;
+    margin-left: 20px;
+    font-weight: bolder;
+    font-size: 25px;
+    padding: 10px 10px;
+}
