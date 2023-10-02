@@ -4,6 +4,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useState } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import {Link,NavLink} from 'react-router-dom';
 
 const Navbar = () => {
      var items =["Bollywood","Hollywood","Tollywood","Series","Adventure","SciFi","Comedy","Horror","Mystery","Romance","Anime","Adults","Action","Crime","Thriller","Documentary"]
@@ -22,23 +23,43 @@ const Navbar = () => {
       setCurrentPosition(currentPosition + stepSize);
     }
   };
+
+  const navStyleLink = ({isActive})=>{
+    return{
+      width:"35%",
+      height: "40px",
+      borderRadius: "10px",
+      fontSize: "18px",
+      outline: "none",
+      border: "none",
+      backgroundColor:"rgb(122, 129, 131)",
+      color: "white",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+      textDecoration:isActive ? "none" : "none",
+    }
+  }
+
   return (
     <>
     <div id='navbar'>
-        <div id='leftNav'><h1>Movie Venture</h1></div>
+        <div id='leftNav'>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1>Movie Venture</h1></Link>
+          </div>
         <div id='bottomNav'>
             <input id='searchBar' placeholder='Search here...' />
             <button id='searchBtn'> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
         </div>
         <div id='rightNav'>
-            <button className='rightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button>
-            <button className='rightNavBtn'>Register</button>
-            <button className='rightNavBtn'>Login</button>
+          <NavLink style={navStyleLink}  to={'/bookmark'}><button className='rightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
+           <NavLink style={navStyleLink}  to={'/login'}><button className='rightNavBtn'>Login</button></NavLink>
         </div>
     </div>
    <div id='optionsMain'>
       <button onClick={handleLeftClick}>
-        <ChevronLeftIcon sx={{ backgroundColor: "transparent", color: "white", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
+        <ChevronLeftIcon sx={{ backgroundColor: "transparent", color: "black", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
       </button>
       <div id='options' style={{ transform: `translateX(${currentPosition}px)` }}>
         {items.map((item, index) => (
@@ -46,7 +67,7 @@ const Navbar = () => {
         ))}
       </div>
       <button onClick={handleRightClick}>
-        <ChevronRightIcon sx={{ backgroundColor: "transparent", color: "white", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
+        <ChevronRightIcon sx={{ backgroundColor: "transparent", color: "black", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
       </button>
     </div>
     </>

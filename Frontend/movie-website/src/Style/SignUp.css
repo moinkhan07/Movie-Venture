@@ -1,66 +1,66 @@
-#signUp{
-    width: 30%;
-    border: 1px solid transparent;
-  border-radius: 20px; 
+#signupDiv{
+    width: 28%;
     margin: auto;
-   background-color: #fea641;
-}
-#signUp>input{
-  width: 95%;
-  padding: 10px 10px;
-  margin: 10px 10px;
- color: #fea641;
- border: 1px solid transparent;
- border-radius: 10px;
-}
-#signUp>input::placeholder{
-    color: #fff;
-}
-#signUp>#submit{
-    width: 95%;
-    padding: 10px 10px;
-    margin: 10px;
-    font-size: large;
-    font-weight: bolder;
-    cursor: pointer;
-    color: #fea641;
-    border: 1px solid transparent;
+    margin-top: 80px;
     border-radius: 10px;
-    background-color: #313135;
-}
-#box{
-    width: 95%;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    margin: 10px 10px;
     background-color: #fea641;
+    padding: 20px 15px;
 }
-#box>P{
-color:#fff;
-text-align: center;
-border: 1px solid transparent;
-    border-radius: 10px;
-    margin-bottom: 20px;
-padding:10px 10px;
-}
-#signUp>#img{
-    height: 70px;
-    border: 1px solid transparent;
+#signupDiv img{
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    margin-left: 40%;
-    margin-top: 20px;
-    margin-bottom: 2px;
-    width: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
-#signUp>h1{
-    color: black;
-    border: 1px solid transparent;
+#signupDiv>h2{
+    margin-top: 10px;
+    text-align: center;
+}
+#signupDiv>input{
+    width: 100%;
+    height: 35px;
+    margin-top: 20px;
     border-radius: 10px;
-    width: 90%;
-    background-color: #fea641;
-    margin: 10px 10px;
-    margin-left: 20px;
-    font-weight: bolder;
-    font-size: 25px;
-    padding: 10px 10px;
+    outline: none;
+    border: none;
+    background-color: #595959;
+    padding-left: 10px;
+    font-size: 15px;
+    color: white;
+}
+#signupDiv>input::placeholder{
+    color: white;
+}
+#signupDiv>button{
+    width: 100%;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: #595959;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fea641;
+    font-weight: bold;
+}
+#signupDiv>button:hover{
+    background-color: #343434;
+}
+#signupDiv>hr{
+    width: 100%;
+    border: none;
+    border-top: 1px dashed rgb(0, 0, 0);
+    margin-top: 20px;
+    outline: none;
+}
+#already{
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+#already:hover{
+    color: white;
 }

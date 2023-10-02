@@ -7,6 +7,7 @@ const MovieList = () => {
     {
       title: "Download Jawan (2023) (Hindi Clean Audio-Multi Audio) Movie HQ S-Print || 480p [900MB] || 720p [1.6GB] || 1080p [3GB]",
       imageUrl: "https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg"
+      // download:"https://mega.nz/file/yvJk2YAB#c3CLSUV9PU2MZs00wEWw4OjCO4edDGDDV9nRFk4QgfE"
     },
     {
       title: "Download Interstellar (2014) Dual Audio (Hindi-English) 480p [600MB] || 720p [1.86GB] || 1080p [2.9GB]",

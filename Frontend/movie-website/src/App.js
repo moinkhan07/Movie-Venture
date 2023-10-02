@@ -8,18 +8,21 @@ import './Style/MoviePagination.css'
 import Navbar from './Components/Navbar';
 import Content from './Components/Content'
 import Footer from './Components/Footer';
-import MoviePagination from './Components/MoviePagination';
+import Bookmark from './Components/Bookmark';
+import LogInUser from './Components/LogInUser' 
 import SignUp from './Components/SignUp';
-import LogInUser from './Components/LogInUser';
-
+import MoviePagination from './Components/MoviePagination';
+import {Routes,Route} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Content />
-      <MoviePagination/>
-      <Footer />
+      <Routes>
+      <Route path='/' element={[<Navbar/>,<Content/>,<MoviePagination/>,<Footer/>]} />
+      <Route path='bookmark' element={[<Navbar/>,<Bookmark/>]} />
+      <Route path='login' element={<LogInUser />} />
+      <Route path='signup' element={<SignUp />} />
+      </Routes>
     </div>
   );
 }
