@@ -64,3 +64,12 @@
 #already:hover{
     color: white;
 }
+@media only screen and (max-width :766px){
+    #signupDiv{
+        width: 80%;
+        margin-top: 120px;
+    }
+    #signupDiv>h2{
+        font-size: 22px;
+    }
+}

@@ -64,3 +64,13 @@
 #newUser:hover{
     color: white;
 }
+
+@media only screen and (max-width :766px){
+    #loginDiv{
+        width: 80%;
+        margin-top: 150px;
+    }
+    #loginDiv>h2{
+        font-size: 22px;
+    }
+}
