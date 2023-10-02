@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 
@@ -167,22 +167,33 @@ const MovieList = () => {
     }
   ];
   let data = movieData.slice(0,20);
+  // Step 1: Create an array of color states, initialized with 'red' for each movie
+  const [iconColors, setIconColors] = useState(Array(movieData.length).fill('red'));
 
+  // Step 3: Create a function to handle the button click event for each movie
+  const handleButtonClick = (index) => {
+    // Update the color state for the clicked movie to 'green'
+    const newIconColors = [...iconColors];
+    newIconColors[index] = newIconColors[index] === 'red' ? 'green' : 'red';
+    setIconColors(newIconColors);
+  };
   return (
     <>
-      {data.map((movie, index) => (
+      {movieData.map((movie, index) => (
         <div key={index} className='movieDiv' >
-            <button className="bookmarkMovie">
+            <button className="bookmarkMovie" onClick={()=>handleButtonClick(index)}>
             <BookmarkIcon
               sx={{
                 backgroundColor: "transparent",
-                color: "red",
+                color: iconColors[index],
                 fontSize: "40px",
                 fontWeight: "bold",
               }}
             />
           </button>
-          <p className="bookmarkText">Tap To Bookmark</p>
+          <p className="bookmarkText" style={{ backgroundColor: iconColors[index]}}>
+          {iconColors[index] === 'red' ? 'Tap To Bookmark' : 'Tap To Remove from Bookmark'}
+          </p>
           <img src={movie.imageUrl} alt={movie.title} />
           <p>{movie.title}</p>
         </div>

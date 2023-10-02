@@ -57,4 +57,5 @@
 }
 #contentMain .movieDiv:hover .bookmarkText {
     display: block;
+    color: white;
   }
