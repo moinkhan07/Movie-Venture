@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div id='footer'>
-        <p>How to Download | Report Broken Links | Request Us | DMCA | Contact Us | About Us | Site Disclaimer</p>
+        <p>Report Broken Links | Request Us | Site Disclaimer | How to Download | Contact Us | About Us</p>
     </div>
   )
 }
