@@ -58,24 +58,24 @@ const Navbar = () => {
         </div>
     </div>
     {/* ====================New Navbar======================================================== */}
-    <div id='newNavbar'>
+     <div id='newNavbar'>
         <div id='newLeftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1>Movie Venture</h1></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src="https://i.pinimg.com/originals/08/cc/66/08cc66cca6f975c721f6cf1aa481f238.jpg"/></Link>
           </div>
-          <div id='newBottom'>
+          
           <div id='newBottomNav'>
             <input id='newSearchBar' placeholder='Search here...' />
             <button id='newSearchBtn'> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
           </div>
-          </div>
-          <div id='newRight'>
+        
+        
           <div id='newRightNav'>
-          <NavLink style={navStyleLink}  to={'/bookmark'}><button className='newRightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
+          <NavLink style={navStyleLink}  to={'/bookmark'}><button className='newRightNavBtn'><BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/></button></NavLink>
            <NavLink style={navStyleLink}  to={'/login'}><button className='newRightNavBtn'>Login</button></NavLink>
           </div>
-          </div>
+         
        
-    </div>
+    </div> 
 
     {/* ========================================================================= */}
    <div id='optionsMain'>

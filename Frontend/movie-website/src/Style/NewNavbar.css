@@ -1,4 +1,78 @@
 #newNavbar{
-    width: 98%;
-    
+    width: 95%;
+    height: 60px;
+    box-shadow: rgba(255, 255, 255, 0.02) 0px 1px 3px 0px, rgba(255, 255, 255, 0.15) 0px 0px 0px 1px;
+    color: #FEA641;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 10px;
+}
+#newLeftNav{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#newBottomNav{
+    width: 38%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#newSearchBar{
+    width: 88%;
+    height:90%;
+    padding-left: 10px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.02) 0px 1px 3px 0px, rgba(255, 255, 255, 0.15) 0px 0px 0px 1px;
+}
+#newSearchBtn{
+    width: 12%;
+    height: 95%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(76, 80, 81);
+}
+#newSearchBtn:hover{
+    background-color:rgb(122, 129, 131);
+}
+#newSearchBar::placeholder{
+    color: rgb(182, 179, 179);
+}
+#newRightNav{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#newRightNav .newRightNavBtn{
+    width:35%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background-color:rgb(122, 129, 131);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#newRightNav .newRightNavBtn:hover{
+    width: 100%;
+    background-color: rgb(82, 82, 82);
+    color: #FEA641;
 }
