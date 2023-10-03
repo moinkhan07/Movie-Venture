@@ -91,6 +91,19 @@ const Navbar = () => {
         <ChevronRightIcon sx={{ backgroundColor: "transparent", color: "black", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
       </button>
     </div>
+    <div id='newOptionsMain'>
+      <button onClick={handleLeftClick}>
+        <ChevronLeftIcon sx={{ backgroundColor: "transparent", color: "black", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
+      </button>
+      <div id='newOptions' style={{ transform: `translateX(${currentPosition}px)` }}>
+        {items.map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
+      </div>
+      <button onClick={handleRightClick}>
+        <ChevronRightIcon sx={{ backgroundColor: "transparent", color: "black", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />
+      </button>
+    </div>
     </>
   )
 }

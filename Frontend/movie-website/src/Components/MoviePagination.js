@@ -17,7 +17,7 @@ const MoviePagination = ({ totalPages, onPageChange }) => {
         onChange={handlePageChange}
         color="primary"
         shape="rounded"
-        size="large"
+        size="small"
       />
     </div>
   );

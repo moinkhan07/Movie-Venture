@@ -5,7 +5,7 @@ import './Style/MovieList.css'
 import './Style/Footer.css'
 import './Style/SignUp.css'
 import './Style/LogInUser.css'
-import './Style/Responsive.css'
+import './Style/NewOptions.css'
 import './Style/MoviePagination.css'
 import Navbar from './Components/Navbar';
 import Content from './Components/Content'
@@ -13,7 +13,6 @@ import Footer from './Components/Footer';
 import Bookmark from './Components/Bookmark';
 import LogInUser from './Components/LogInUser' 
 import SignUp from './Components/SignUp';
-import MoviePagination from './Components/MoviePagination';
 import {Routes,Route} from 'react-router-dom'
 
 function App() {
