@@ -57,6 +57,27 @@ const Navbar = () => {
            <NavLink style={navStyleLink}  to={'/login'}><button className='rightNavBtn'>Login</button></NavLink>
         </div>
     </div>
+    {/* ====================New Navbar======================================================== */}
+    <div id='newNavbar'>
+        <div id='newLeftNav'>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1>Movie Venture</h1></Link>
+          </div>
+          <div id='newBottom'>
+          <div id='newBottomNav'>
+            <input id='newSearchBar' placeholder='Search here...' />
+            <button id='newSearchBtn'> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
+          </div>
+          </div>
+          <div id='newRight'>
+          <div id='newRightNav'>
+          <NavLink style={navStyleLink}  to={'/bookmark'}><button className='newRightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
+           <NavLink style={navStyleLink}  to={'/login'}><button className='newRightNavBtn'>Login</button></NavLink>
+          </div>
+          </div>
+       
+    </div>
+
+    {/* ========================================================================= */}
    <div id='optionsMain'>
       <button onClick={handleLeftClick}>
         <ChevronLeftIcon sx={{ backgroundColor: "transparent", color: "black", width: "100%", height: "100%", display: "flex", alignContent: "center" }} />

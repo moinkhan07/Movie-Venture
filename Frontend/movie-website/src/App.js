@@ -1,9 +1,11 @@
 import './index.css';
 import './Style/Navbar.css'
+import './Style/NewNavbar.css'
 import './Style/MovieList.css'
 import './Style/Footer.css'
 import './Style/SignUp.css'
 import './Style/LogInUser.css'
+import './Style/Responsive.css'
 import './Style/MoviePagination.css'
 import Navbar from './Components/Navbar';
 import Content from './Components/Content'
