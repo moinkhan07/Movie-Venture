@@ -60,7 +60,7 @@ const Navbar = () => {
     {/* ====================New Navbar======================================================== */}
      <div id='newNavbar'>
         <div id='newLeftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src="https://i.pinimg.com/originals/08/cc/66/08cc66cca6f975c721f6cf1aa481f238.jpg"/></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src="https://i.pinimg.com/originals/08/cc/66/08cc66cca6f975c721f6cf1aa481f238.jpg" alt="Website Logo"/></Link>
           </div>
           
           <div id='newBottomNav'>
