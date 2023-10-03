@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 
-const MoviePagination = () => {
+const MoviePagination = ({ totalPages, onPageChange }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+    onPageChange(page);
+  };
+
   return (
     <div id='moviePagination'>
-      <Pagination count={10} color="primary" shape="rounded" size="large"/>
+      <Pagination
+        count={totalPages}
+        page={currentPage}
+        onChange={handlePageChange}
+        color="primary"
+        shape="rounded"
+        size="large"
+      />
     </div>
   );
 };
+
 export default MoviePagination;

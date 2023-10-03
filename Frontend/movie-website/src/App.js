@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-      <Route path='/' element={[<Navbar/>,<Content/>,<MoviePagination/>,<Footer/>]} />
+      <Route path='/' element={[<Navbar/>,<Content/>,<Footer/>]} />
       <Route path='bookmark' element={[<Navbar/>,<Bookmark/>]} />
       <Route path='login' element={<LogInUser />} />
       <Route path='signup' element={<SignUp />} />
