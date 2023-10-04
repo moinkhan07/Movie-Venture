@@ -18,6 +18,7 @@ const MoviePagination = ({ totalPages, onPageChange }) => {
         color="primary"
         shape="rounded"
         size="small"
+        defaultPage={1}
       />
     </div>
   );
