@@ -95,7 +95,31 @@ public class MovieController {
 	@DeleteMapping("/movies/{mId}")
 	public ResponseEntity<Movies> deleteMovieHandler(@PathVariable("mId") Integer movieId) throws MovieException{
 		Movies deletedMovie = movieService.deleteMovie(movieId);
-		return new ResponseEntity<>(deletedMovie,HttpStatus.OK);
+		return new ResponseEntity<Movies>(deletedMovie,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies")
+	public ResponseEntity<List<Movies>> getAllMoviesHandler() throws MovieException{
+		List<Movies> listOfMovies = movieService.getAllMovies();
+		return new ResponseEntity<List<Movies>>(listOfMovies,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies/category/{category}")
+	public ResponseEntity<List<Movies>> getMovieByCategoryHandler(@PathVariable("category") String category) throws MovieException{
+		List<Movies> moviesByCategory = movieService.getAllMoviesByCategory(category);
+		return new ResponseEntity<List<Movies>>(moviesByCategory,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies/title/{title}")
+	public ResponseEntity<List<Movies>> getMovieByTitleHandler(@PathVariable("title") String title) throws MovieException{
+		List<Movies> moviesByTitle = movieService.getAllMoviesByTitle(title);
+		return new ResponseEntity<List<Movies>>(moviesByTitle,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies/{mId}")
+	public ResponseEntity<Movies> getMovieByMovieIdHandler(@PathVariable("mId") Integer movieId) throws MovieException{
+		Movies movie = movieService.getMovieByMovieId(movieId);
+		return new ResponseEntity<Movies>(movie,HttpStatus.OK);
 	}
 	
 	
