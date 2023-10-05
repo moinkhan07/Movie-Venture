@@ -9,6 +9,7 @@ import './Style/NewOptions.css'
 import './Style/MoviePagination.css'
 import './Style/Movie.css'
 import './Style/Complain.css'
+import './Style/ComplainBox.css'
 import Navbar from './Components/Navbar';
 import Content from './Components/Content'
 import Footer from './Components/Footer';
@@ -17,6 +18,7 @@ import LogInUser from './Components/LogInUser'
 import SignUp from './Components/SignUp';
 import Movie from './Components/Movie';
 import Complain from './Components/Complain';
+import ComplainBox from './Components/ComplainBox';
 import {Routes,Route} from 'react-router-dom'
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
       <Route path='login' element={<LogInUser />} />
       <Route path='signup' element={<SignUp />} />
       <Route path='movie/:movieId/page/:currentPage' element={<Movie />} />
+      <Route path='complain' element={[<Navbar/> ,<ComplainBox />]}/>
       </Routes>
     </div>
   );
