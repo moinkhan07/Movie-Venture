@@ -1,0 +1,41 @@
+#complainMainLarge{
+    width: 4%;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    background-color: rgb(75, 75, 75);
+    position: fixed;
+    z-index: 1;
+    right: 25px;
+    bottom: 45px;
+}
+#complainMainLarge:hover{
+    background-color: rgb(109, 109, 109);
+}
+#complainMainSmall{
+    display: none;
+}
+@media only screen and (max-width :766px){
+    #complainMainLarge{
+        display: none;
+    }
+    #complainMainSmall{
+        display: block;
+        width: 15%;
+        height: 55px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: rgb(75, 75, 75);
+        position: fixed;
+        z-index: 1;
+        right: 10px;
+        bottom: 25px;
+    }
+}
