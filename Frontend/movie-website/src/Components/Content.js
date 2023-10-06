@@ -4,11 +4,13 @@ import MovieList from './MovieList';
 
 const Content = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const moviesPerPage = 4;
+  const moviesPerPage = 10;
 
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
+
+  // Access bookmarkedMovies and toggleBookmark from the BookmarkContext if needed
 
   const movieData = [
     {
@@ -218,13 +220,12 @@ const Content = () => {
 
   return (
     <>
-    <div id="contentMain">
-      <MovieList currentPage={currentPage} moviesPerPage={moviesPerPage} movieData={movieData} />
-    </div>
-     <MoviePagination totalPages={totalPages} onPageChange={onPageChange}  />
-     </>
+      <div id="contentMain">
+        <MovieList currentPage={currentPage} moviesPerPage={moviesPerPage} movieData={movieData} />
+      </div>
+      <MoviePagination totalPages={totalPages} onPageChange={onPageChange} />
+    </>
   );
 };
 
 export default Content;
-

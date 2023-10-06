@@ -23,7 +23,7 @@ public class Movies {
 	
 	private String movieImageUrl;
 	
-	private String movieType;
+	private String movieCategory;
 		
 	private String movieTitle;
 	

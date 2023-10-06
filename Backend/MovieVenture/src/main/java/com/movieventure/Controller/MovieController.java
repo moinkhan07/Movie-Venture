@@ -20,10 +20,12 @@ import com.movieventure.Exception.MovieException;
 import com.movieventure.Exception.UsersException;
 import com.movieventure.Model.Admin;
 import com.movieventure.Model.Bookmark;
+import com.movieventure.Model.Complain;
 import com.movieventure.Model.Movies;
 import com.movieventure.Model.Users;
 import com.movieventure.Service.AdminService;
 import com.movieventure.Service.BookmarkService;
+import com.movieventure.Service.ComplainService;
 import com.movieventure.Service.MovieService;
 import com.movieventure.Service.UserService;
 
@@ -42,13 +44,16 @@ public class MovieController {
 	private BookmarkService bookmarkService;
 	
 	@Autowired
+	private ComplainService complainService;
+	
+	@Autowired
 	private MovieService movieService;
 	
 //	=================================== User Controller ==================================
 	@PostMapping("/users")
 	public ResponseEntity<Users> saveUsersHandler(@Valid @RequestBody Users users) throws UsersException{
 		Users registeredUser= userService.registerUser(users);		
-		return new ResponseEntity<>(registeredUser,HttpStatus.ACCEPTED);
+		return new ResponseEntity<Users>(registeredUser,HttpStatus.ACCEPTED);
 		
 	}
 	
@@ -62,7 +67,7 @@ public class MovieController {
 	@GetMapping("/users")
 	public ResponseEntity<List<Users>> getAllUsersHandler() throws UsersException{
 		List<Users> users= userService.getAllUserDetails();
-		return new ResponseEntity<>(users,HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Users>>(users,HttpStatus.ACCEPTED);
 	} 
 	
 //	=================================== Admin Controller ==================================
@@ -95,7 +100,31 @@ public class MovieController {
 	@DeleteMapping("/movies/{mId}")
 	public ResponseEntity<Movies> deleteMovieHandler(@PathVariable("mId") Integer movieId) throws MovieException{
 		Movies deletedMovie = movieService.deleteMovie(movieId);
-		return new ResponseEntity<>(deletedMovie,HttpStatus.OK);
+		return new ResponseEntity<Movies>(deletedMovie,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies")
+	public ResponseEntity<List<Movies>> getAllMoviesHandler() throws MovieException{
+		List<Movies> listOfMovies = movieService.getAllMovies();
+		return new ResponseEntity<List<Movies>>(listOfMovies,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies/category/{category}")
+	public ResponseEntity<List<Movies>> getMovieByCategoryHandler(@PathVariable("category") String category) throws MovieException{
+		List<Movies> moviesByCategory = movieService.getAllMoviesByCategory(category);
+		return new ResponseEntity<List<Movies>>(moviesByCategory,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies/title/{title}")
+	public ResponseEntity<List<Movies>> getMovieByTitleHandler(@PathVariable("title") String title) throws MovieException{
+		List<Movies> moviesByTitle = movieService.getAllMoviesByTitle(title);
+		return new ResponseEntity<List<Movies>>(moviesByTitle,HttpStatus.OK);
+	}
+	
+	@GetMapping("/movies/{mId}")
+	public ResponseEntity<Movies> getMovieByMovieIdHandler(@PathVariable("mId") Integer movieId) throws MovieException{
+		Movies movie = movieService.getMovieByMovieId(movieId);
+		return new ResponseEntity<Movies>(movie,HttpStatus.OK);
 	}
 	
 	
@@ -119,4 +148,17 @@ public class MovieController {
 		return new ResponseEntity<Bookmark>(deletedMovie,HttpStatus.OK);
  	}
 	
+//	=================================== Complain Controller ==================================
+	@PostMapping("/complains")
+	public ResponseEntity<Complain> addComplainHandler(@RequestBody Complain complain){
+		Complain addComplain = complainService.addComplain(complain);
+		return new ResponseEntity<Complain>(addComplain,HttpStatus.ACCEPTED);
+		
+	}
+	
+	@GetMapping("/complains")
+	public ResponseEntity<List<Complain>> getAllComplainsHandler(){
+		List<Complain> complains = complainService.listOfComplains();
+		return new ResponseEntity<List<Complain>>(complains,HttpStatus.ACCEPTED);
+	} 
 }
