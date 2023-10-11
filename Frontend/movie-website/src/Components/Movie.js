@@ -37,9 +37,18 @@ const Movie = () => {
           </div>
           <h2 id='downloadHeading'>Download Links: </h2>
           <div id='downloadLinks'>
-              <div>480p [900MB]</div>
-              <div>720p [1.6GB]</div>
-              <div>1080p [3GB]</div>
+              <div>
+                <p>480p</p>
+                <p>[900MB]</p>
+              </div>
+              <div>
+                <p>720p</p>
+                <p>[1.6GB]</p>
+              </div>
+              <div>
+                <p>1080p</p>
+                <p>[3GB]</p>
+              </div>
             </div>
         </div>
         <div id='movieInfoRight'>
