@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
 import { useParams } from 'react-router-dom';
-import Footer from './Footer';
 
 const Movie = () => {
     const { movieId, currentPage } = useParams();
@@ -74,7 +73,6 @@ const Movie = () => {
           </div>
         </div>
     </div>
-    <Footer/>
     </>
   );
 };
