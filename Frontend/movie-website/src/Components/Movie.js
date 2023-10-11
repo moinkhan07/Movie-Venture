@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import { useParams } from 'react-router-dom';
+import Footer from './Footer';
 
 const Movie = () => {
     const { movieId, currentPage } = useParams();
@@ -27,11 +28,19 @@ const Movie = () => {
               <p><b style={{color:"#FEA641"}}> Summary:</b> Jawan shares the story of an Indian individual who endured the harshest torture at the hands of a gang that brutally tormented many pitiful regular people while unable to understand the difference between even a little child. He made the decision not to leave anyone to cause harm to society after escaping from the gang. The remaining plot of this movie concerns how he locates the major antagonist and how he aims to take him out.</p>
             </div>
           </div>
+          <h2 id='screenshotsHeading'>Screenshots: </h2>
+          <div id='screenshotsImagesDiv'>
+            <div className='screenshotsImages'> <img src='https://new2.imgpress.xyz/images/2023/09/07/vlcsnap-2023-09-07-05h53m50s166.jpg' alt='movieScreenshot' /> </div>
+            <div className='screenshotsImages'> <img src='https://new2.imgpress.xyz/images/2023/09/07/vlcsnap-2023-09-07-05h49m07s784.jpg' alt='movieScreenshot' /> </div>
+            <div className='screenshotsImages'> <img src='https://new2.imgpress.xyz/images/2023/09/07/vlcsnap-2023-09-07-01h21m41s366.jpg' alt='movieScreenshot' /> </div>
+            <div className='screenshotsImages'> <img src='https://new2.imgpress.xyz/images/2023/09/07/vlcsnap-2023-09-07-05h22m28s364.jpg' alt='movieScreenshot' /> </div>
+            <div className='screenshotsImages'> <img src='https://new2.imgpress.xyz/images/2023/09/07/vlcsnap-2023-09-07-05h37m11s907.jpg' alt='movieScreenshot' /> </div>
+          </div>
           <h2 id='downloadHeading'>Download Links: </h2>
           <div id='downloadLinks'>
-              <div>480p</div>
-              <div>720p</div>
-              <div>1080p</div>
+              <div>480p [900MB]</div>
+              <div>720p [1.6GB]</div>
+              <div>1080p [3GB]</div>
             </div>
         </div>
         <div id='movieInfoRight'>
@@ -65,6 +74,7 @@ const Movie = () => {
           </div>
         </div>
     </div>
+    <Footer/>
     </>
   );
 };
