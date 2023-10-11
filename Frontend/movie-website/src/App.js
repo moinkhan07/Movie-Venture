@@ -2,7 +2,6 @@ import './index.css';
 import './Style/Navbar.css'
 import './Style/NewNavbar.css'
 import './Style/MovieList.css'
-import './Style/Footer.css'
 import './Style/SignUp.css'
 import './Style/LogInUser.css'
 import './Style/NewOptions.css'
@@ -12,7 +11,6 @@ import './Style/Complain.css'
 import './Style/ComplainBox.css'
 import Navbar from './Components/Navbar';
 import Content from './Components/Content'
-import Footer from './Components/Footer';
 import Bookmark from './Components/Bookmark';
 import LogInUser from './Components/LogInUser' 
 import SignUp from './Components/SignUp';
@@ -26,7 +24,7 @@ function App() {
     <div className="App">
       <Complain />
       <Routes>
-      <Route path='/' element={[<Navbar/>,<Content/>,<Footer/>]} />
+      <Route path='/' element={[<Navbar/>,<Content/>]} />
       <Route path='bookmark' element={[<Navbar/>,<Bookmark/>]} />
       <Route path='login' element={<LogInUser />} />
       <Route path='signup' element={<SignUp />} />
