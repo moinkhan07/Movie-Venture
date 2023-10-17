@@ -12,7 +12,7 @@ import com.movieventure.Model.Movies;
 @Repository
 public interface MovieRepo extends JpaRepository<Movies, Integer>{
 	
-	public Movies findByMovieId(Integer id);
+	public Movies findByMoviesId(Integer id);
 	
 	@Query("Select m from Movies m where m.movieTitle like %:name%")
 	public List<Movies> findByMovieTitle(@Param("name") String name);

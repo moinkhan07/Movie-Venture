@@ -14,17 +14,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Movies {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer movieId;
+	private Integer moviesId;
 	
-	private String movieImageUrl;
+	private String moviesImageUrl;
 	
 	private String movieCategory;
 		
@@ -53,6 +53,6 @@ public class Movies {
 	private String movie1080pVideoLink;
 	
 	@OneToMany(mappedBy = "movie",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<MovieImages> listOfMoviesImages = new ArrayList<>();
+	private List<MovieImages> listOfPicturesImages = new ArrayList<>();
 	
 }

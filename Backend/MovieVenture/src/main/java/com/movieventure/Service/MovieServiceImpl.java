@@ -23,7 +23,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public Movies deleteMovie(Integer movieId) throws MovieException {
-		Movies existingMovies = movieRepo.findByMovieId(movieId);
+		Movies existingMovies = movieRepo.findByMoviesId(movieId);
 		if (existingMovies == null) {
 			throw new MovieException("Movie does'nt exist with MovieId : "+ movieId);
 		}

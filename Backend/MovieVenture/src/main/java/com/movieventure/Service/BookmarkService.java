@@ -3,8 +3,6 @@ package com.movieventure.Service;
 import java.util.List;
 
 import com.movieventure.Exception.BookmarkException;
-import com.movieventure.Exception.MovieException;
-import com.movieventure.Exception.UsersException;
 import com.movieventure.Model.Bookmark;
 import com.movieventure.Model.Movies;
 import com.movieventure.Model.Users;
