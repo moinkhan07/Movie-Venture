@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import SendIcon from '@mui/icons-material/Send';
 
 const ComplainBox = () => {
@@ -9,10 +9,18 @@ const ComplainBox = () => {
   };
 
   const handleSubmit = () => {
-    // Create a JSON object to send as the request body
-    const data = { complaint };
+    const data = { complainMessage: complaint };
+    if(data.complainMessage == ""){
+      window.alert("Field is empty!")
+      return;
+    }
+    
+    if (data.complainMessage.length > 255) {
+      window.alert("Length should be less than 255 characters!");
+      return;
+    }
 
-    fetch('http://your-api-endpoint-url', {
+    fetch('http://localhost:8000/complains', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,12 +28,12 @@ const ComplainBox = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 202) {
           window.alert('Complaint sent successfully');
           setComplaint('');
         } else {
-          // Handle error responses here
-          console.error('Failed to send complaint');
+          window.alert('Failed to send complaint');
+          setComplaint('');
         }
       })
       .catch((error) => {

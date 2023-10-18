@@ -4,7 +4,7 @@ import MovieList from './MovieList';
 
 const Content = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const moviesPerPage = 10;
+  const moviesPerPage = 20;
 
   const onPageChange = (page) => {
     setCurrentPage(page);
