@@ -27,7 +27,11 @@ public class Movies {
 	
 	private String movieSubtitle; 
 	
-	private String movieQuality;
+	private String movie480QualitySize;
+	
+	private String movie720QualitySize;
+	
+	private String movie1080QualitySize;
 	
 	private String movieLatestOrNot;
 	
