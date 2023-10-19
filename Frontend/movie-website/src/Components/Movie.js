@@ -1,9 +1,9 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import Navbar from './Navbar';
 import { useParams } from 'react-router-dom';
 
 const Movie = () => {
-    const { movieId, currentPage } = useParams();
+    const { movieId} = useParams();  // we can use currentPage in the brackets {} 
     const [data,setData] = useState([]);
 
     const getMovieData = async ()=>{
@@ -11,11 +11,8 @@ const Movie = () => {
       let data = await res.json();
       setData(data);
     }
-    useEffect(()=>{
       getMovieData();
-    },[]);
 
-    
   return (
     <>
     <Navbar/>
@@ -49,16 +46,16 @@ const Movie = () => {
           <h2 id='downloadHeading'>Download Links: </h2>
           <div id='downloadLinks'>
               <div>
-                <p>480p</p>
-                <p>[900MB]</p>
+                <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie480QualitySize}`}</p>
+                <button>Download</button>
               </div>
               <div>
-                <p>720p</p>
-                <p>[1.6GB]</p>
+                <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie720QualitySize}`}</p>
+                <button>Download</button>
               </div>
               <div>
-                <p>1080p</p>
-                <p>[3GB]</p>
+                <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie1080QualitySize}`}</p>
+                <button>Download</button>
               </div>
             </div>
         </div>
