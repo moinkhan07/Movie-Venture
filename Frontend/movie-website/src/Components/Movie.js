@@ -9,8 +9,6 @@ const Movie = () => {
     <>
     <Navbar/>
     <div id='movieInfoMain'>
-        {/* <h1> Movie ID:{movieId}</h1>
-        <h1>Page Number:{currentPage}</h1> */}
         <div id='movieInfoLeft'>
           <h2>Download Jawan (2023) (Hindi Clean Audio-Multi Audio) Movie HQ S-Print || 480p [900MB] || 720p [1.6GB] || 1080p [3GB]</h2>
           <div id='selectedMovieDetails'>
