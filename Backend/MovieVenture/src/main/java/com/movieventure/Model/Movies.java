@@ -1,15 +1,9 @@
 package com.movieventure.Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Movies {
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +47,14 @@ public class Movies {
 	
 	private String movie1080pVideoLink;
 	
-	@OneToMany(mappedBy = "movie",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<MovieImages> listOfPicturesImages = new ArrayList<>();
+	private String imageUrl1;
+	
+	private String imageUrl2;
+	
+	private String imageUrl3;
+	
+	private String imageUrl4;
+	
+	private String imageUrl5;
 	
 }
