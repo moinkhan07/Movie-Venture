@@ -36,7 +36,6 @@ const Content = ({ searchQuery }) => {
   return (
     <>
       <div id="contentMain">
-        {/* <MovieList currentPage={currentPage} moviesPerPage={moviesPerPage} movieData={filterMovies()} /> */}
         {filteredMovieData.length === 0 ? (
           <p style={{
             fontSize: '20px',

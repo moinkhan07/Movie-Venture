@@ -4,14 +4,16 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useState,useRef } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {Link,NavLink} from 'react-router-dom';
+import {Link,NavLink,useNavigate} from 'react-router-dom';
 
 const Navbar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef(null);
+  const navigate = useNavigate(); 
 
   const handleSearch = () => {
     onSearch(searchQuery);
+    navigate('/');
   };
 
   const handleKeyPress = (event) => {
@@ -59,7 +61,7 @@ const Navbar = ({ onSearch }) => {
     <>
     <div id='navbar'>
         <div id='leftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1 onClick={() => window.location.reload()}>Movie Venture</h1></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1 >Movie Venture</h1></Link>
           </div>
         <div id='bottomNav'>
             <input id='searchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
@@ -73,7 +75,7 @@ const Navbar = ({ onSearch }) => {
     {/* ====================New Navbar======================================================== */}
      <div id='newNavbar'>
         <div id='newLeftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img onClick={() => window.location.reload()} src={require('../Assets/logo.jpg')} /></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src={require('../Assets/logo.jpg')} /></Link>
           </div>
           
           <div id='newBottomNav'>
