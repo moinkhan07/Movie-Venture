@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './index.css';
 import './Style/Navbar.css'
 import './Style/NewNavbar.css'
@@ -20,16 +21,22 @@ import ComplainBox from './Components/ComplainBox';
 import {Routes,Route} from 'react-router-dom'
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
+
+  const handleSearch = (query) => {
+    setSearchQuery(query); // Function to update the search query state
+  };
+
   return (
     <div className="App">
       <Complain />
       <Routes>
-      <Route path='/' element={[<Navbar/>,<Content/>]} />
-      <Route path='bookmark' element={[<Navbar/>,<Bookmark/>]} />
+      <Route path='/' element={[<Navbar onSearch={handleSearch} />,<Content searchQuery={searchQuery} />]} />
+      <Route path='bookmark' element={[<Navbar onSearch={handleSearch} />,<Bookmark/>]} />
       <Route path='login' element={<LogInUser />} />
       <Route path='signup' element={<SignUp />} />
       <Route path='movie/:movieId/page/:currentPage' element={<Movie />} />
-      <Route path='complain' element={[<Navbar/> ,<ComplainBox />]}/>
+      <Route path='complain' element={[<Navbar onSearch={handleSearch} /> ,<ComplainBox />]}/>
       </Routes>
     </div>
   );

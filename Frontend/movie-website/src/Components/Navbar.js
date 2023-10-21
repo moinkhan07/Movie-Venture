@@ -1,12 +1,25 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {Link,NavLink} from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef(null);
+
+  const handleSearch = () => {
+    onSearch(searchQuery);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch(); // Call the search function on "Enter" key press
+    }
+  };
+
      var items =["Bollywood","Hollywood","Tollywood","Series","Adventure","SciFi","Comedy","Horror","Mystery","Romance","Anime","Adults","Action","Crime","Thriller","Documentary"]
      var stepSize = 50
   const [currentPosition, setCurrentPosition] = useState(0);
@@ -46,11 +59,11 @@ const Navbar = () => {
     <>
     <div id='navbar'>
         <div id='leftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1>Movie Venture</h1></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1 onClick={() => window.location.reload()}>Movie Venture</h1></Link>
           </div>
         <div id='bottomNav'>
-            <input id='searchBar' placeholder='Search here...' />
-            <button id='searchBtn'> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
+            <input id='searchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            <button id='searchBtn' onClick={handleSearch}> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
         </div>
         <div id='rightNav'>
           <NavLink style={navStyleLink}  to={'/bookmark'}><button className='rightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
@@ -60,12 +73,12 @@ const Navbar = () => {
     {/* ====================New Navbar======================================================== */}
      <div id='newNavbar'>
         <div id='newLeftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src={require('../Assets/logo.jpg')} /></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img onClick={() => window.location.reload()} src={require('../Assets/logo.jpg')} /></Link>
           </div>
           
           <div id='newBottomNav'>
-            <input id='newSearchBar' placeholder='Search here...' />
-            <button id='newSearchBtn'> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
+            <input id='newSearchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+            <button id='newSearchBtn'  onClick={handleSearch}> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
           </div>
         
         
