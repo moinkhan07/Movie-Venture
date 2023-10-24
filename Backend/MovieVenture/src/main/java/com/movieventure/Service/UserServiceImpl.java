@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.movieventure.DTO.UsersDTO;
 import com.movieventure.Exception.UsersException;
+import com.movieventure.Model.Bookmark;
 import com.movieventure.Model.Users;
 import com.movieventure.Repository.UsersRepo;
 
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public Users registerUser(Users users) throws UsersException {
+		users.setBookmarkMovies(new Bookmark());
 		Users existingUser = usersRepo.findByUserEmail(users.getUserEmail());
 		if (existingUser == null) {
 		     return	usersRepo.save(users);
@@ -41,6 +43,15 @@ public class UserServiceImpl implements UserService{
 			throw new UsersException("No user found");
 		}
 		return users;
+	}
+
+	@Override
+	public Users userByUserEmail(String userEmail) throws UsersException {
+		Users existingUsers = usersRepo.findByUserEmail(userEmail);
+		if (existingUsers != null) {
+			return existingUsers;
+		}
+		throw new UsersException("No user found!");
 	}
 
 }

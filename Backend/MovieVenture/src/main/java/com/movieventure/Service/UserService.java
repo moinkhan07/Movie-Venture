@@ -12,6 +12,8 @@ public interface UserService {
 	
 	public String loginUser(UsersDTO usersDTO) throws UsersException;
 	
+	public Users userByUserEmail(String userEmail) throws UsersException;
+	
 	public List<Users> getAllUserDetails() throws UsersException;
 
 }

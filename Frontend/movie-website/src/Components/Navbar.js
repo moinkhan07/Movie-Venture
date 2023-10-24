@@ -1,12 +1,28 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useState,useRef } from 'react';
+import { useState,useRef,useEffect } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {Link,NavLink,useNavigate} from 'react-router-dom';
 
 const Navbar = ({ onSearch }) => {
+  const userEmail = localStorage.getItem("userEmail");
+  const [userName,setUserName] = useState("");
+
+  useEffect(() => {
+    if (userEmail) {
+      const getUserDetail = async () => {
+        let res = await fetch(`http://localhost:8000/users/${userEmail}`);
+        let data = await res.json();
+        if (data && data.firstName) {
+          setUserName(data.firstName);
+        }
+      };
+      getUserDetail();
+    }
+  }, [userEmail]);
+
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef(null);
   const navigate = useNavigate(); 
@@ -69,13 +85,22 @@ const Navbar = ({ onSearch }) => {
         </div>
         <div id='rightNav'>
           <NavLink style={navStyleLink}  to={'/bookmark'}><button className='rightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
-           <NavLink style={navStyleLink}  to={'/login'}><button className='rightNavBtn'>Login</button></NavLink>
+           {/* <NavLink style={navStyleLink}  to={'/login'}><button className='rightNavBtn'>Login</button></NavLink> */}
+           {userEmail ? (
+            <NavLink style={navStyleLink} to="">
+            <button className="rightNavBtn">{userName}</button>
+          </NavLink>
+          ) : (
+            <NavLink style={navStyleLink} to="/login">
+              <button className="rightNavBtn">Login</button>
+            </NavLink>
+          )}
         </div>
     </div>
     {/* ====================New Navbar======================================================== */}
      <div id='newNavbar'>
         <div id='newLeftNav'>
-          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src={require('../Assets/logo.jpg')} /></Link>
+          <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><img src={require('../Assets/logo.jpg')} alt="Logo" /></Link>
           </div>
           
           <div id='newBottomNav'>

@@ -66,6 +66,12 @@ public class MovieController {
 		
 	}
 	
+	@GetMapping("/users/{email}")
+	public ResponseEntity<Users> getUserByEmailHandler(@PathVariable("email") String email) throws UsersException{
+		Users users = userService.userByUserEmail(email);
+		return new ResponseEntity<Users>(users,HttpStatus.OK);
+	} 
+	
 	@GetMapping("/users")
 	public ResponseEntity<List<Users>> getAllUsersHandler() throws UsersException{
 		List<Users> users= userService.getAllUserDetails();
