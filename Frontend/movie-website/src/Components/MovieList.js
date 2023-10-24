@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { useBookmark } from './BookmarkContext';
 import {Link} from 'react-router-dom';
@@ -6,6 +6,24 @@ import {Link} from 'react-router-dom';
 
 const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
   const { bookmarkedMovies, toggleBookmark } = useBookmark();
+
+  const userEmail = localStorage.getItem("userEmail");
+  const [bookmarkId,setBookmarkId] = useState(0);
+  console.log(bookmarkId);
+  useEffect(() => {
+    if (userEmail) {
+      const getUserDetail = async () => {
+        let res = await fetch(`http://localhost:8000/users/${userEmail}`);
+        let data = await res.json();
+        if (data && data.bookmarkMovies.bookmarkId) {
+          setBookmarkId(data.bookmarkMovies.bookmarkId);
+        }
+        console.log(data);
+      };
+      getUserDetail();
+    }
+  }, [userEmail]);
+
 
   const startIndex = (currentPage - 1) * moviesPerPage;
   const endIndex = startIndex + moviesPerPage;
