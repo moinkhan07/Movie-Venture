@@ -6,11 +6,13 @@ import {Link} from 'react-router-dom';
 const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
   const { bookmarkedMovies, toggleBookmark } = useBookmark();
 
+
   const userEmail = localStorage.getItem("userEmail");
 
   const [userData, setUserData] = useState([]);
     
   const [bookmarkMovieData,setBookmarkMovieData] = useState([]);
+
 
   useEffect(() => {
     if (userEmail) {

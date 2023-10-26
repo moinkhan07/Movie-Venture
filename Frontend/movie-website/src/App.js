@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './index.css';
 import './Style/Navbar.css'
 import './Style/NewNavbar.css'
@@ -19,6 +19,7 @@ import Movie from './Components/Movie';
 import Complain from './Components/Complain';
 import ComplainBox from './Components/ComplainBox';
 import {Routes,Route} from 'react-router-dom'
+import  {PageProvider} from './Components/PageContext';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
@@ -28,6 +29,7 @@ function App() {
   };
 
   return (
+    <PageProvider>
     <div className="App">
       <Complain />
       <Routes>
@@ -39,6 +41,7 @@ function App() {
       <Route path='complain' element={[<Navbar onSearch={handleSearch} /> ,<ComplainBox />]}/>
       </Routes>
     </div>
+    </PageProvider>
   );
 }
 
