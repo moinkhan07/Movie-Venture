@@ -38,7 +38,17 @@ const Navbar = ({ onSearch }) => {
     }
   };
 
-     var items =["Bollywood","Hollywood","Tollywood","Series","Adventure","SciFi","Comedy","Horror","Mystery","Romance","Anime","Adults","Action","Crime","Thriller","Documentary"]
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
+    setSearchQuery(inputValue);
+    if (inputValue === '') {
+      // Automatically trigger the search when the input is cleared
+      onSearch('');
+      navigate('/');
+    }
+  };
+
+     var items =["Hollywood","Adventure","SciFi","Comedy","Horror","Mystery","Series","Romance","Anime","Adults","Action","Crime","Thriller","Documentary"]
      var stepSize = 50
   const [currentPosition, setCurrentPosition] = useState(0);
 
@@ -80,12 +90,11 @@ const Navbar = ({ onSearch }) => {
           <Link to={'/'} style={{color:"#FEA641",textDecoration:"none"}}><h1 >Movie Venture</h1></Link>
           </div>
         <div id='bottomNav'>
-            <input id='searchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            <input id='searchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={handleInputChange} />
             <button id='searchBtn' onClick={handleSearch}> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
         </div>
         <div id='rightNav'>
           <NavLink style={navStyleLink}  to={'/bookmark'}><button className='rightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
-           {/* <NavLink style={navStyleLink}  to={'/login'}><button className='rightNavBtn'>Login</button></NavLink> */}
            {userEmail ? (
             <NavLink style={navStyleLink} to="">
             <button className="rightNavBtn">{userName}</button>
@@ -104,15 +113,22 @@ const Navbar = ({ onSearch }) => {
           </div>
           
           <div id='newBottomNav'>
-            <input id='newSearchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+            <input id='newSearchBar' placeholder='Search here...'  onKeyPress={handleKeyPress} ref={searchInputRef} value={searchQuery} onChange={handleInputChange}/>
             <button id='newSearchBtn'  onClick={handleSearch}> <SearchIcon sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> </button>
           </div>
         
-        
-          <div id='newRightNav'>
-          <NavLink style={navStyleLink}  to={'/bookmark'}><button className='newRightNavBtn'><BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/></button></NavLink>
-           <NavLink style={navStyleLink}  to={'/login'}><button className='newRightNavBtn'>Login</button></NavLink>
-          </div>
+           <div id='newRightNav'>
+          <NavLink style={navStyleLink}  to={'/bookmark'}><button className='newRightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/></button></NavLink>
+           {userEmail ? (
+            <NavLink style={navStyleLink} to="">
+            <button className="newRightNavBtn">{userName}</button>
+          </NavLink>
+          ) : (
+            <NavLink style={navStyleLink} to="/login">
+              <button className="newRightNavBtn">Login</button>
+            </NavLink>
+          )}
+        </div>
          
        
     </div> 
