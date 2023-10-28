@@ -48,7 +48,7 @@ const Navbar = ({ onSearch }) => {
     }
   };
 
-     var items =["Hollywood","Adventure","SciFi","Comedy","Horror","Mystery","Series","Romance","Anime","Adults","Action","Crime","Thriller","Documentary"]
+     var items =["Action","Adult","Adventure", "Anime", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Fantasy","Heist", "History", "Horror", "Mystery", "Romance", "SciFi", "Sports", "SuperHero","Survival", "Thriller", "TimeTravel" ,"War","Zombie"]
      var stepSize = 50
   const [currentPosition, setCurrentPosition] = useState(0);
 

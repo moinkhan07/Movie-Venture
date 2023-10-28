@@ -103,7 +103,7 @@
     align-items: center;
     border-radius: 2px;
     position: relative;
-  z-index: 1; 
+    z-index: 1; 
 }
 #options>p{
     padding: 10px;
