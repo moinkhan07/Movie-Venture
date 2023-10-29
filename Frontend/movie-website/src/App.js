@@ -23,17 +23,27 @@ import  {PageProvider} from './Components/PageContext';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const handleSearch = (query) => {
     setSearchQuery(query); // Function to update the search query state
   };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category); // Function to update the selected category state
+  };
+
+  // [<Navbar onSearch={handleSearch} />,<Content searchQuery={searchQuery} />]
 
   return (
     <PageProvider>
     <div className="App">
       <Complain />
       <Routes>
-      <Route path='/' element={[<Navbar onSearch={handleSearch} />,<Content searchQuery={searchQuery} />]} />
+      <Route path='/' element={ [
+              <Navbar onSearch={handleSearch} onSelectCategory={handleCategoryChange} />,
+              <Content searchQuery={searchQuery} selectedCategory={selectedCategory} />
+            ]} />
       <Route path='bookmark' element={[<Navbar onSearch={handleSearch} />,<Bookmark/>]} />
       <Route path='login' element={<LogInUser />} />
       <Route path='signup' element={<SignUp />} />

@@ -6,7 +6,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {Link,NavLink,useNavigate} from 'react-router-dom';
 
-const Navbar = ({ onSearch }) => {
+const Navbar = ({ onSearch , onSelectCategory}) => {
   const userEmail = localStorage.getItem("userEmail");
   const [userName,setUserName] = useState("");
 
@@ -48,9 +48,13 @@ const Navbar = ({ onSearch }) => {
     }
   };
 
-     var items =["Action","Adult","Adventure", "Anime", "Biography", "Comedy", "Crime", "Documentary", "Drama", "Fantasy","Heist", "History", "Horror", "Mystery", "Romance", "SciFi", "Sports", "SuperHero","Survival", "Thriller", "TimeTravel" ,"War","Zombie"]
+     var items =["All","Action","Adult","Adventure", "Anime", "Comedy", "Crime", "Documentary", "Fantasy","Heist", "Horror","JungleAdventure", "Mystery", "Romance", "SciFi","SpaceAdventure", "Sports", "SuperHero","Survival", "Thriller", "TimeTravel" ,"War","Zombie"]
      var stepSize = 50
   const [currentPosition, setCurrentPosition] = useState(0);
+
+  const handleCategoryChange = (category) => {
+    onSelectCategory(category);
+  };
 
   const handleRightClick = () => {
     const maxPosition = -((items.length - 1) * stepSize);
@@ -140,7 +144,7 @@ const Navbar = ({ onSearch }) => {
       </button>
       <div id='options' style={{ transform: `translateX(${currentPosition}px)` }}>
         {items.map((item, index) => (
-          <p key={index}>{item}</p>
+          <p key={index} onClick={() => handleCategoryChange(item)}>{item}</p>
         ))}
       </div>
       <button onClick={handleRightClick}>
@@ -155,7 +159,7 @@ const Navbar = ({ onSearch }) => {
       </button>
       <div id='newOptions' style={{ transform: `translateX(${currentPosition}px)` }}>
         {items.map((it, i) => (
-          <p key={i}>{it}</p>
+          <p key={i} onClick={() => handleCategoryChange(it)}>{it}</p>
         ))}
       </div>
       <button onClick={handleRightClick}>

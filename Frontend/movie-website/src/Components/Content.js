@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MoviePagination from './MoviePagination';
 import MovieList from './MovieList';
 
-const Content = ({ searchQuery }) => {
+const Content = ({ searchQuery, selectedCategory }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 20;
   const [movieData,setMovieData] = useState([]);
@@ -19,12 +19,27 @@ const Content = ({ searchQuery }) => {
   useEffect(()=>{
     getMoviesData();
   },[]);
+
+  useEffect(()=>{
+    getMoviesByCategory();
+  },[selectedCategory])
+
+  const getMoviesByCategory = async ()=>{
+    if(selectedCategory !== "All"){
+    let res = await fetch(`http://localhost:8000/movies/category/${selectedCategory}`);
+    let data = await res.json();
+    setMovieData(data);
+    }
+    else{
+      getMoviesData();
+    }
+  }
   
   const totalPages = Math.ceil(movieData.length / moviesPerPage);
 
   const filterMovies = () => {
     if (!searchQuery) {
-      return movieData; // If no search query, return all movies
+      return movieData; 
     }
     return movieData.filter((movie) =>
       movie.movieTitle.toLowerCase().includes(searchQuery.toLowerCase())

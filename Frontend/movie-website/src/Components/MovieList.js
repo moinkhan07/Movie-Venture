@@ -1,11 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import BookmarkIcon from "@mui/icons-material/Bookmark";
-import { useBookmark } from './BookmarkContext';
 import {Link} from 'react-router-dom';
 
 const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
-  const { bookmarkedMovies, toggleBookmark } = useBookmark();
-
 
   const userEmail = localStorage.getItem("userEmail");
 

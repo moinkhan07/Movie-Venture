@@ -17,5 +17,6 @@ public interface MovieRepo extends JpaRepository<Movies, Integer>{
 	@Query("Select m from Movies m where m.movieTitle like %:name%")
 	public List<Movies> findByMovieTitle(@Param("name") String name);
 	
-	public List<Movies> findByMovieCategory(String movieCategory);
+	@Query("Select m from Movies m where m.movieCategory like %:name%")
+	public List<Movies> findByMovieCategory(@Param("name") String name);
 }
