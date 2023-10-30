@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import Navbar from './Navbar';
 import { useParams } from 'react-router-dom';
 
 const Movie = () => {
@@ -15,7 +14,6 @@ const Movie = () => {
 
   return (
     <>
-    <Navbar/>
     <div id='movieInfoMain'>
         <div id='movieInfoLeft'>
           <h2>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie480QualitySize} || ${data.movie720QualitySize} || ${data.movie1080QualitySize}`}</h2>

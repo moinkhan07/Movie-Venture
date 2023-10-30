@@ -49,11 +49,12 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
   };
 
      var items =["All","Action","Adult","Adventure", "Anime", "Comedy", "Crime", "Documentary", "Fantasy","Heist", "Horror","JungleAdventure", "Mystery", "Romance", "SciFi","SpaceAdventure", "Sports", "SuperHero","Survival", "Thriller", "TimeTravel" ,"War","Zombie"]
-     var stepSize = 50
+     var stepSize = 75
   const [currentPosition, setCurrentPosition] = useState(0);
 
   const handleCategoryChange = (category) => {
     onSelectCategory(category);
+    navigate('/');
   };
 
   const handleRightClick = () => {

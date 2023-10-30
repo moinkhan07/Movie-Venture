@@ -33,8 +33,6 @@ function App() {
     setSelectedCategory(category); // Function to update the selected category state
   };
 
-  // [<Navbar onSearch={handleSearch} />,<Content searchQuery={searchQuery} />]
-
   return (
     <PageProvider>
     <div className="App">
@@ -44,11 +42,11 @@ function App() {
               <Navbar onSearch={handleSearch} onSelectCategory={handleCategoryChange} />,
               <Content searchQuery={searchQuery} selectedCategory={selectedCategory} />
             ]} />
-      <Route path='bookmark' element={[<Navbar onSearch={handleSearch} />,<Bookmark/>]} />
+      <Route path='bookmark' element={[<Navbar onSearch={handleSearch} onSelectCategory={handleCategoryChange} />,<Bookmark/>]} />
       <Route path='login' element={<LogInUser />} />
       <Route path='signup' element={<SignUp />} />
-      <Route path='movie/:movieId/page/:currentPage' element={<Movie />} />
-      <Route path='complain' element={[<Navbar onSearch={handleSearch} /> ,<ComplainBox />]}/>
+      <Route path='movie/:movieId/page/:currentPage' element={[<Navbar onSearch={handleSearch} onSelectCategory={handleCategoryChange} />, <Movie />]} />
+      <Route path='complain' element={[<Navbar onSearch={handleSearch} onSelectCategory={handleCategoryChange} /> ,<ComplainBox />]}/>
       </Routes>
     </div>
     </PageProvider>
