@@ -35,7 +35,10 @@ const Bookmark = () => {
   },[]);
 
   const isMovieBookmarked = (movie) => {
-    return bookmarkMovieData.some((bookmarkMovie) => bookmarkMovie.moviesId === movie.moviesId);
+    if (Array.isArray(bookmarkMovieData)) {
+      return bookmarkMovieData.some((bookmarkMovie) => bookmarkMovie.moviesId === movie.moviesId);
+    }
+    return false;
   };
 
   const handleBookmarkClick = (movie) => {

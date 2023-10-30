@@ -34,10 +34,17 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
   },[]);
   
   const isMovieBookmarked = (movie) => {
-    return bookmarkMovieData.some((bookmarkMovie) => bookmarkMovie.moviesId === movie.moviesId);
+    if (Array.isArray(bookmarkMovieData)) {
+      return bookmarkMovieData.some((bookmarkMovie) => bookmarkMovie.moviesId === movie.moviesId);
+    }
+    return false;
   };
 
   const handleBookmarkClick = (movie) => {
+    if (!userEmail) {
+      // User is not logged in, show an alert
+      window.alert("Please Login First!");
+    } else {
     if (isMovieBookmarked(movie)) {
       // Remove the movie from bookmarks
       fetch(`http://localhost:8000/bookmark/${userData.bookmarkMovies.bookmarkId}/${movie.moviesId}`, {
@@ -75,6 +82,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
         setBookmarkMovieData((prevData) => [...prevData, movie]);
       });
     }
+  }
   };
   
   
