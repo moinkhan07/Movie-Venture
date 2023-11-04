@@ -151,15 +151,25 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
         
            <div id='newRightNav'>
           <NavLink style={navStyleLink}  to={'/bookmark'}><button className='newRightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/></button></NavLink>
-           {userEmail ? (
-            <NavLink style={navStyleLink} to="">
-            <button className="newRightNavBtn">{userName}</button>
-          </NavLink>
-          ) : (
-            <NavLink style={navStyleLink} to="/login">
-              <button className="newRightNavBtn">Login</button>
-            </NavLink>
-          )}
+          {userEmail ? (
+  <NavLink style={navStyleLink} to="">
+    <button
+      className="newRightNavBtn"
+      onClick={() => setShowLogoutButton((prevState) => !prevState)}
+    >
+      {userName}
+    </button>
+    {showLogoutButton && (
+      <button id="logoutBtn" onClick={handleLogout}>
+        Logout
+      </button>
+    )}
+  </NavLink>
+) : (
+  <NavLink style={navStyleLink} to="/login">
+    <button className="newRightNavBtn">Login</button>
+  </NavLink>
+)}
         </div>
          
        

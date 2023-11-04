@@ -238,4 +238,8 @@
         background-color: rgb(82, 82, 82);
         color: #FEA641;
     }
+    #logoutBtn{
+        width: 45px;
+        font-size: 12px;
+    }
 }
