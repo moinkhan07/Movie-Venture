@@ -36,6 +36,20 @@
 #contentMain .movieDiv p:hover{
     color: #FEA641;
 }
+#contentMain .movieDiv .ratingdiv{
+    width: 50px;
+    height: 45px;
+    background-color: rgba(75, 75, 75, 0.905);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 30%;
+    position: absolute;
+    font-size: 19px;
+    font-weight: bold;
+    color: #FEA641;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #contentMain .movieDiv .bookmarkMovie{
     outline: none;
     border: none;

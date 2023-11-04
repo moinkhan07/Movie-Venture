@@ -97,6 +97,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
     <>
       {movieData.slice(startIndex, endIndex).map((movie, index) => ( 
         <div className='movieDiv' key={index} >
+          <div className="ratingdiv">{movie.movieRating}</div>
           <button className="bookmarkMovie" onClick={() => handleBookmarkClick(movie)}>
             <BookmarkIcon
               sx={{
