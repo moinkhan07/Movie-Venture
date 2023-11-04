@@ -9,6 +9,15 @@ import {Link,NavLink,useNavigate} from 'react-router-dom';
 const Navbar = ({ onSearch , onSelectCategory}) => {
   const userEmail = localStorage.getItem("userEmail");
   const [userName,setUserName] = useState("");
+  const [showLogoutOption, setShowLogoutOption] = useState(false);
+
+  const handleLogout = () => {
+    // Perform logout actions, such as removing the userEmail from local storage.
+    localStorage.removeItem('userEmail');
+    setUserName('');
+    setShowLogoutOption(false);
+  };
+
 
   useEffect(() => {
     if (userEmail) {
@@ -86,6 +95,10 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
       cursor: "pointer",
       textDecoration:isActive ? "none" : "none",
     }
+  }
+
+  const logout = () =>{
+    localStorage.removeItem('userEmail');
   }
 
   return (
