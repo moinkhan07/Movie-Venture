@@ -9,15 +9,7 @@ import {Link,NavLink,useNavigate} from 'react-router-dom';
 const Navbar = ({ onSearch , onSelectCategory}) => {
   const userEmail = localStorage.getItem("userEmail");
   const [userName,setUserName] = useState("");
-  const [showLogoutOption, setShowLogoutOption] = useState(false);
-
-  const handleLogout = () => {
-    // Perform logout actions, such as removing the userEmail from local storage.
-    localStorage.removeItem('userEmail');
-    setUserName('');
-    setShowLogoutOption(false);
-  };
-
+  const [showLogoutButton, setShowLogoutButton] = useState(false);
 
   useEffect(() => {
     if (userEmail) {
@@ -97,10 +89,13 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
     }
   }
 
-  const logout = () =>{
+  const handleLogout = () => {
+    // Perform logout actions, such as removing the userEmail from local storage.
     localStorage.removeItem('userEmail');
-  }
-
+    setUserName('');
+    setShowLogoutButton(false); // Hide the logout button
+  };
+  
   return (
     <>
     <div id='navbar'>
@@ -113,7 +108,7 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
         </div>
         <div id='rightNav'>
           <NavLink style={navStyleLink}  to={'/bookmark'}><button className='rightNavBtn'> <BookmarkIcon  sx={{ backgroundColor:"transparent",color:"white",fontSize:"28px",fontWeight:"bold" }}/> Bookmark</button></NavLink>
-           {userEmail ? (
+           {/* {userEmail ? (
             <NavLink style={navStyleLink} to="">
             <button className="rightNavBtn">{userName}</button>
           </NavLink>
@@ -121,7 +116,26 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
             <NavLink style={navStyleLink} to="/login">
               <button className="rightNavBtn">Login</button>
             </NavLink>
-          )}
+          )} */}
+          {userEmail ? (
+  <NavLink style={navStyleLink} to="">
+    <button
+      className="rightNavBtn"
+      onClick={() => setShowLogoutButton((prevState) => !prevState)}
+    >
+      {userName}
+    </button>
+    {showLogoutButton && (
+      <button id="logoutBtn" onClick={handleLogout}>
+        Logout
+      </button>
+    )}
+  </NavLink>
+) : (
+  <NavLink style={navStyleLink} to="/login">
+    <button className="rightNavBtn">Login</button>
+  </NavLink>
+)}
         </div>
     </div>
     {/* ====================New Navbar======================================================== */}
