@@ -1,17 +1,40 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 const Movie = () => {
     const { movieId} = useParams();  // we can use currentPage in the brackets {} 
     const [data,setData] = useState([]);
+    const [recommendedMovies, setRecommendedMovies] = useState([]);
 
     const getMovieData = async ()=>{
       let res = await fetch(`http://localhost:8000/movies/${movieId}`);
       let data = await res.json();
       setData(data);
     }
+    useEffect(() => {
       getMovieData();
+    }, [movieId]);
 
+    useEffect(() => {
+      const fetchRecommendedMovies = async () => {
+        let res = await fetch(`http://localhost:8000/movies`);
+        let recommendedMoviesData = await res.json();
+  
+        const filteredRecommendedMovies = recommendedMoviesData.filter(
+          recommendedMovie => recommendedMovie.movieTitle !== data.movieTitle
+        );
+  
+        setRecommendedMovies(filteredRecommendedMovies);
+      };
+  
+      fetchRecommendedMovies();
+    }, [data.moviesId]);
+
+    const handleRecommendedMovieClick = (movie) => {
+      setData(movie);
+    };
+  
+      
   return (
     <>
     <div id='movieInfoMain'>
@@ -62,28 +85,15 @@ const Movie = () => {
           <p>Recommeded Movies</p>
           </div>
           <div id='movieRecommededAppend'>
-          <div className='movieRecommeded'>
-              <p>Jawan (2023) (Hindi Clean Audio-Multi Audio) Movie HQ || 480p [900MB] || 720p [1.6GB] || 1080p [3GB]</p>
-          </div>
-          <div className='movieRecommeded'>
-              <p>Interstellar (2014) Dual Audio (Hindi-English) 480p [600MB] || 720p [1.86GB] || 1080p [2.9GB]</p>
-          </div>
-          <div className='movieRecommeded'>
-              <p>Inception (2010) Dual Audio Hindi-English 480p [450MB] || 720p [1.3GB] || 1080p [3.2GB]</p>
-          </div>
-          <div className='movieRecommeded'>
-              <p>Prometheus (2012) Dual Audio (Hindi-English) Msubs Bluray 480p [450MB] || 720p [1.1GB] || 1080p [2.6GB]</p>
-          </div>
-          <div className='movieRecommeded'>
-              <p>Avatar 2 The Way of Water (2022) (Hindi-English) BluRay 480p [690MB] || 720p [1.7GB] || 1080p [4.1GB]</p>
-          </div>
-          <div className='movieRecommeded'>
-              <p>Jawan (2023) (Hindi Clean Audio-Multi Audio) Movie HQ || 480p [900MB] || 720p [1.6GB] || 1080p [3GB]</p>
-          </div>
-          <div className='movieRecommeded'>
-              <p>Interstellar (2014) Dual Audio (Hindi-English) 480p [600MB] || 720p [1.86GB] || 1080p [2.9GB]</p>
-          </div>
-
+             {recommendedMovies.map(recommendedMovie => (
+              <div
+                key={recommendedMovie.moviesId}
+                className="movieRecommeded"
+                onClick={() => handleRecommendedMovieClick(recommendedMovie)}
+              >
+                <p>{`${recommendedMovie.movieTitle} (${recommendedMovie.movieReleaseYear}) (${recommendedMovie.movielangaugesAvailable}) ${recommendedMovie.movie480QualitySize} || ${recommendedMovie.movie720QualitySize} || ${recommendedMovie.movie1080QualitySize}`}</p>
+              </div>
+            ))}
 
           </div>
         </div>
