@@ -10,6 +10,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
     
   const [bookmarkMovieData,setBookmarkMovieData] = useState([]);
 
+  const [bookmarkId,setBookmarkId] = useState();
 
   useEffect(() => {
     if (userEmail) {
@@ -22,15 +23,25 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
     }
   }, [bookmarkMovieData]);
 
+  const getBookmarkId = async ()=>{
+    if(userEmail){
+    let res = await fetch(`http://localhost:8000/getBookmarkId/${userEmail}`);
+    let data = await res.json();
+    setBookmarkId(data.bookmarkId);
+    }
+  }  
 
   const getAllBookmarkMovies = async () =>{
+    if(userEmail){
     let res = await fetch(`http://localhost:8000/bookmark/${userEmail}`);
     let data = await res.json();
     setBookmarkMovieData(data);
+    }
   }
 
   useEffect(()=>{
     getAllBookmarkMovies();
+    getBookmarkId();
   },[]);
   
   const isMovieBookmarked = (movie) => {
@@ -41,25 +52,32 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
   };
 
   const handleBookmarkClick = (movie) => {
-    if (!userEmail) {
-      // User is not logged in, show an alert
+    if(!userEmail){
       window.alert("Please Login First!");
-    } else {
+    }else{
     if (isMovieBookmarked(movie)) {
       // Remove the movie from bookmarks
-      fetch(`http://localhost:8000/bookmark/${userData.bookmarkMovies.bookmarkId}/${movie.moviesId}`, {
+      fetch(`http://localhost:8000/bookmark/${bookmarkId}/${movie.moviesId}`, {
         method: 'DELETE',
       }).then(() => {
-        setUserData((prevUserData) => ({
-          ...prevUserData,
-          bookmarkMovies: {
-            ...prevUserData.bookmarkMovies,
-            listOfMovies: prevUserData.bookmarkMovies.listOfMovies.filter((id) => id !== movie.moviesId),
-          },
-        }));
+        setUserData((prevUserData) => {
+          if (prevUserData && prevUserData.bookmarkMovies && prevUserData.bookmarkMovies.bookmarkMovies) {
+            return {
+              ...prevUserData,
+              bookmarkMovies: {
+                ...prevUserData.bookmarkMovies,
+                bookmarkMovies: prevUserData.bookmarkMovies.bookmarkMovies.filter((id) => id !== movie.moviesId),
+              },
+            };
+          }
+          return prevUserData;
+        });
   
         // Update bookmarkMovieData immediately by filtering out the removed movie
         setBookmarkMovieData((prevData) => prevData.filter((item) => item.moviesId !== movie.moviesId));
+  
+        // Update bookmarkId after removing the movie
+        getBookmarkId();
       });
     } else {
       // Add the movie to bookmarks
@@ -70,21 +88,32 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
           'Content-Type': 'application/json',
         },
       }).then(() => {
-        setUserData((prevUserData) => ({
-          ...prevUserData,
-          bookmarkMovies: {
-            ...prevUserData.bookmarkMovies,
-            listOfMovies: [...prevUserData.bookmarkMovies.listOfMovies, movie.moviesId],
-          },
-        }));
+        setUserData((prevUserData) => {
+          if (prevUserData && prevUserData.bookmarkMovies && prevUserData.bookmarkMovies.bookmarkMovies) {
+            return {
+              ...prevUserData,
+              bookmarkMovies: {
+                ...prevUserData.bookmarkMovies,
+                bookmarkMovies: [...prevUserData.bookmarkMovies.bookmarkMovies, movie.moviesId],
+              },
+            };
+          }
+          return prevUserData;
+        });
   
         // Update bookmarkMovieData immediately by adding the new movie
         setBookmarkMovieData((prevData) => [...prevData, movie]);
+  
+        // Update bookmarkId after adding the movie
+        getBookmarkId();
       });
     }
   }
   };
   
+
+  
+
   
   
 

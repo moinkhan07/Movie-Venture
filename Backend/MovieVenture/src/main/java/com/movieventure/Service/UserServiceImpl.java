@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public Users registerUser(Users users) throws UsersException {
-		users.setBookmarkMovies(new Bookmark());
 		Users existingUser = usersRepo.findByUserEmail(users.getUserEmail());
 		if (existingUser == null) {
 		     return	usersRepo.save(users);

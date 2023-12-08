@@ -1,5 +1,7 @@
 package com.movieventure.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +30,9 @@ public class Users {
 	
 	private String userPassword;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	@JsonIgnore
 	private Bookmark bookmarkMovies;
+	
 
 }

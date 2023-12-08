@@ -10,6 +10,8 @@ const Bookmark = () => {
 
   const [userData, setUserData] = useState([]);
 
+  const [bookmarkId,setBookmarkId] = useState();
+
   const [bookmarkMovieData,setBookmarkMovieData] = useState([]);
 
   useEffect(() => {
@@ -23,15 +25,25 @@ const Bookmark = () => {
     }
   }, [bookmarkMovieData]);
 
+  const getBookmarkId = async ()=>{
+    if(userEmail){
+    let res = await fetch(`http://localhost:8000/getBookmarkId/${userEmail}`);
+    let data = await res.json();
+    setBookmarkId(data.bookmarkId);
+    }
+  }  
 
   const getAllBookmarkMovies = async () =>{
+    if(userEmail){
     let res = await fetch(`http://localhost:8000/bookmark/${userEmail}`);
     let data = await res.json();
     setBookmarkMovieData(data);
+    }
   }
 
   useEffect(()=>{
     getAllBookmarkMovies();
+    getBookmarkId();
   },[]);
 
   const isMovieBookmarked = (movie) => {
@@ -43,15 +55,14 @@ const Bookmark = () => {
 
   const handleBookmarkClick = (movie) => {
     if (isMovieBookmarked(movie)) {
-      // Remove the movie from bookmarks
-      fetch(`http://localhost:8000/bookmark/${userData.bookmarkMovies.bookmarkId}/${movie.moviesId}`, {
+      fetch(`http://localhost:8000/bookmark/${bookmarkId}/${movie.moviesId}`, {
         method: 'DELETE',
       }).then(() => {
         setUserData((prevUserData) => ({
           ...prevUserData,
           bookmarkMovies: {
-            ...prevUserData.bookmarkMovies,
-            listOfMovies: prevUserData.bookmarkMovies.listOfMovies.filter((id) => id !== movie.moviesId),
+            ...prevUserData?.bookmarkMovies,
+            bookmarkMovies: prevUserData?.bookmarkMovies?.bookmarkMovies?.filter((item) => item.moviesId !== movie.moviesId) || [],
           },
         }));
   
@@ -59,6 +70,9 @@ const Bookmark = () => {
       });
     }
   };
+  
+  
+
 
   return (
     <>

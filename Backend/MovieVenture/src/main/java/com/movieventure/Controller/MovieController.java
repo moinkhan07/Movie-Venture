@@ -3,6 +3,7 @@ package com.movieventure.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,7 @@ import com.movieventure.Model.Bookmark;
 import com.movieventure.Model.Complain;
 import com.movieventure.Model.Movies;
 import com.movieventure.Model.Users;
+import com.movieventure.Repository.MovieRepo;
 import com.movieventure.Service.AdminService;
 import com.movieventure.Service.BookmarkService;
 import com.movieventure.Service.ComplainService;
@@ -50,6 +52,9 @@ public class MovieController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private MovieRepo movieRepo;
 	
 //	=================================== User Controller ==================================
 	@PostMapping("/users")
@@ -137,24 +142,39 @@ public class MovieController {
 	
 	
 //	=================================== Bookmark Controller ==================================
-	@PostMapping("/bookmark/{mId}")
-	public ResponseEntity<Bookmark> addMovieToBookmark(@PathVariable("mId") Integer movieId,@RequestBody Users users) throws BookmarkException{
-		Bookmark addedMovie = bookmarkService.addMovieToBookmark(movieId, users);
-		return new ResponseEntity<Bookmark>(addedMovie,HttpStatus.CREATED);
-	}
-	
-	
-	@GetMapping("/bookmark/{uEmail}")
-	public ResponseEntity<List<Movies>> getAllMovies(@PathVariable("uEmail") String userEmail) throws BookmarkException{
-		List<Movies> listOfMoviesInTheBookmarkByUserId = bookmarkService.viewAllMovieByBookmarkId(userEmail);
-		return new ResponseEntity<List<Movies>>(listOfMoviesInTheBookmarkByUserId,HttpStatus.OK);
-	}
-	
-	@DeleteMapping("/bookmark/{bookmarkId}/{movieId}")
-	public ResponseEntity<Bookmark> removeMovieFromTheBookmark(@PathVariable("bookmarkId") Integer bookmarkId, @PathVariable("movieId") Integer movieId) throws BookmarkException{
-		Bookmark deletedMovie = bookmarkService.deleteMovieFromBookmark(bookmarkId,movieId);
-		return new ResponseEntity<Bookmark>(deletedMovie,HttpStatus.OK);
- 	}
+    @PostMapping("/bookmark/{mId}")
+    public ResponseEntity<Bookmark> addMovieToBookmark(
+            @PathVariable("mId") Integer movieId,
+            @RequestBody Users users) throws BookmarkException {
+        
+        Movies movie = movieRepo.findByMoviesId(movieId);
+
+        Bookmark addedMovie = bookmarkService.addMovieToBookmark(movie, users);
+        return new ResponseEntity<>(addedMovie, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/bookmark/{uEmail}")
+    public ResponseEntity<List<Movies>> getAllMovies(
+            @PathVariable("uEmail") String userEmail) throws BookmarkException {
+        
+        List<Movies> listOfMoviesInTheBookmarkByUserId = bookmarkService.viewAllMovieByBookmarkId(userEmail);
+        return new ResponseEntity<>(listOfMoviesInTheBookmarkByUserId, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/bookmark/{bookmarkId}/{movieId}")
+    public ResponseEntity<Bookmark> removeMovieFromTheBookmark(
+            @PathVariable("bookmarkId") Integer bookmarkId,
+            @PathVariable("movieId") Integer movieId) throws BookmarkException {
+        
+        Bookmark deletedMovie = bookmarkService.deleteMovieFromBookmark(bookmarkId, movieId);
+        return new ResponseEntity<>(deletedMovie, HttpStatus.OK);
+    }
+    
+    @GetMapping("/getBookmarkId/{uEmail}")
+    public ResponseEntity<Bookmark> getBookmarkByUserEmail(@PathVariable("uEmail") String userEmail){
+    	Bookmark bookmark = bookmarkService.getBookmarkByUserEmail(userEmail);
+    	return new ResponseEntity<>(bookmark, HttpStatus.OK);
+    }
 	
 //	=================================== Complain Controller ==================================
 	@PostMapping("/complains")

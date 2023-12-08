@@ -1,9 +1,17 @@
 package com.movieventure.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -60,5 +68,9 @@ public class Movies {
 	private String imageUrl4;
 	
 	private String imageUrl5;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "movies")
+	@JsonIgnore
+    private List<BookmarkMovies> bookmarkMovies = new ArrayList<>();
 	
 }
