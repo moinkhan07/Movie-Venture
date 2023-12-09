@@ -54,6 +54,7 @@ const Bookmark = () => {
   };
 
   const handleBookmarkClick = (movie) => {
+    if (userEmail) {
     if (isMovieBookmarked(movie)) {
       fetch(`http://localhost:8000/bookmark/${bookmarkId}/${movie.moviesId}`, {
         method: 'DELETE',
@@ -69,6 +70,7 @@ const Bookmark = () => {
         setBookmarkMovieData((prevData) => prevData.filter((item) => item.moviesId !== movie.moviesId));
       });
     }
+  }
   };
   
   
