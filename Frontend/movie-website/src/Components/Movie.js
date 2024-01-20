@@ -7,7 +7,7 @@ const Movie = () => {
     const [recommendedMovies, setRecommendedMovies] = useState([]);
 
     const getMovieData = async ()=>{
-      let res = await fetch(`http://localhost:8000/movies/${movieId}`);
+      let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/movies/${movieId}`);
       let data = await res.json();
       setData(data);
     }
@@ -17,7 +17,7 @@ const Movie = () => {
 
     useEffect(() => {
       const fetchRecommendedMovies = async () => {
-        let res = await fetch(`http://localhost:8000/movies`);
+        let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/movies`);
         let recommendedMoviesData = await res.json();
   
         const filteredRecommendedMovies = recommendedMoviesData.filter(

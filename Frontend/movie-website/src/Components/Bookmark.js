@@ -17,7 +17,7 @@ const Bookmark = () => {
   useEffect(() => {
     if (userEmail) {
       const getUserDetail = async () => {
-        let res = await fetch(`http://localhost:8000/users/${userEmail}`);
+        let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/users/${userEmail}`);
         let data = await res.json();
         setUserData(data);
       };
@@ -27,7 +27,7 @@ const Bookmark = () => {
 
   const getBookmarkId = async ()=>{
     if(userEmail){
-    let res = await fetch(`http://localhost:8000/getBookmarkId/${userEmail}`);
+    let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/getBookmarkId/${userEmail}`);
     let data = await res.json();
     setBookmarkId(data.bookmarkId);
     }
@@ -35,7 +35,7 @@ const Bookmark = () => {
 
   const getAllBookmarkMovies = async () =>{
     if(userEmail){
-    let res = await fetch(`http://localhost:8000/bookmark/${userEmail}`);
+    let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/bookmark/${userEmail}`);
     let data = await res.json();
     setBookmarkMovieData(data);
     }
@@ -56,7 +56,7 @@ const Bookmark = () => {
   const handleBookmarkClick = (movie) => {
     if (userEmail) {
     if (isMovieBookmarked(movie)) {
-      fetch(`http://localhost:8000/bookmark/${bookmarkId}/${movie.moviesId}`, {
+      fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/bookmark/${bookmarkId}/${movie.moviesId}`, {
         method: 'DELETE',
       }).then(() => {
         setUserData((prevUserData) => ({

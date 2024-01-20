@@ -37,7 +37,7 @@ const SignUp = () => {
       return;
     }
 
-    fetch('http://localhost:8000/users', {
+    fetch('http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

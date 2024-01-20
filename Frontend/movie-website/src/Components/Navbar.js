@@ -14,7 +14,7 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
   useEffect(() => {
     if (userEmail) {
       const getUserDetail = async () => {
-        let res = await fetch(`http://localhost:8000/users/${userEmail}`);
+        let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/users/${userEmail}`);
         let data = await res.json();
         if (data && data.firstName) {
           setUserName(data.firstName);

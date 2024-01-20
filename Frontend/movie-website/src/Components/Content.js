@@ -12,7 +12,7 @@ const Content = ({ searchQuery, selectedCategory }) => {
   };
 
   const getMoviesData = async ()=>{
-    let res = await fetch("http://localhost:8000/movies");
+    let res = await fetch("http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/movies");
     let data = await res.json();
     setMovieData(data);
   }
@@ -26,7 +26,7 @@ const Content = ({ searchQuery, selectedCategory }) => {
 
   const getMoviesByCategory = async ()=>{
     if(selectedCategory !== "All"){
-    let res = await fetch(`http://localhost:8000/movies/category/${selectedCategory}`);
+    let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/movies/category/${selectedCategory}`);
     let data = await res.json();
     setMovieData(data);
     }

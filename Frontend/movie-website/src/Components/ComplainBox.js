@@ -20,7 +20,7 @@ const ComplainBox = () => {
       return;
     }
 
-    fetch('http://localhost:8000/complains', {
+    fetch('http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/complains', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

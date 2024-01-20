@@ -33,7 +33,7 @@ const LogInUser = () => {
     }
 
     
-    fetch('http://localhost:8000/userlogin', {
+    fetch('http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/userlogin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
