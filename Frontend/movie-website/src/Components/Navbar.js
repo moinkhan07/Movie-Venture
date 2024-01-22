@@ -11,10 +11,12 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
   const [userName,setUserName] = useState("");
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
+  const mainUrl = "";
+
   useEffect(() => {
     if (userEmail) {
       const getUserDetail = async () => {
-        let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/users/${userEmail}`);
+        let res = await fetch(`${mainUrl}/users/${userEmail}`);
         let data = await res.json();
         if (data && data.firstName) {
           setUserName(data.firstName);

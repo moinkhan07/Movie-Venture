@@ -32,8 +32,9 @@ const LogInUser = () => {
       return;
     }
 
+    const mainUrl = "";
     
-    fetch('http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/userlogin', {
+    fetch(`${mainUrl}/userlogin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

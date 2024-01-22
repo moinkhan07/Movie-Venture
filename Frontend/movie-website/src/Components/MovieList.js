@@ -12,10 +12,12 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
 
   const [bookmarkId,setBookmarkId] = useState();
 
+  const mainUrl = "";
+
   useEffect(() => {
     if (userEmail) {
       const getUserDetail = async () => {
-        let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/users/${userEmail}`);
+        let res = await fetch(`${mainUrl}/users/${userEmail}`);
         let data = await res.json();
         setUserData(data);
       };
@@ -25,7 +27,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
 
   const getBookmarkId = async ()=>{
     if(userEmail){
-    let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/getBookmarkId/${userEmail}`);
+    let res = await fetch(`${mainUrl}/getBookmarkId/${userEmail}`);
     let data = await res.json();
     setBookmarkId(data.bookmarkId);
     }
@@ -33,7 +35,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
 
   const getAllBookmarkMovies = async () =>{
     if(userEmail){
-    let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/bookmark/${userEmail}`);
+    let res = await fetch(`${mainUrl}/bookmark/${userEmail}`);
     let data = await res.json();
     setBookmarkMovieData(data);
     }
@@ -57,7 +59,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
     }else{
     if (isMovieBookmarked(movie)) {
       // Remove the movie from bookmarks
-      fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/bookmark/${bookmarkId}/${movie.moviesId}`, {
+      fetch(`${mainUrl}/bookmark/${bookmarkId}/${movie.moviesId}`, {
         method: 'DELETE',
       }).then(() => {
         setUserData((prevUserData) => {
@@ -81,7 +83,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
       });
     } else {
       // Add the movie to bookmarks
-      fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/bookmark/${movie.moviesId}`, {
+      fetch(`${mainUrl}/bookmark/${movie.moviesId}`, {
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {

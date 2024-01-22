@@ -4,6 +4,8 @@ import SendIcon from '@mui/icons-material/Send';
 const ComplainBox = () => {
   const [complaint, setComplaint] = useState('');
 
+  const mainUrl = "";
+
   const handleComplaintChange = (e) => {
     setComplaint(e.target.value);
   };
@@ -20,7 +22,7 @@ const ComplainBox = () => {
       return;
     }
 
-    fetch('http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/complains', {
+    fetch(`${mainUrl}/complains`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

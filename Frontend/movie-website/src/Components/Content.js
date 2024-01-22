@@ -11,8 +11,10 @@ const Content = ({ searchQuery, selectedCategory }) => {
     setCurrentPage(page);
   };
 
+  const mainUrl = "";
+
   const getMoviesData = async ()=>{
-    let res = await fetch("http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/movies");
+    let res = await fetch(`${mainUrl}/movies`);
     let data = await res.json();
     setMovieData(data);
   }
@@ -26,7 +28,7 @@ const Content = ({ searchQuery, selectedCategory }) => {
 
   const getMoviesByCategory = async ()=>{
     if(selectedCategory !== "All"){
-    let res = await fetch(`http://movieventure-env.eba-kxacerts.eu-north-1.elasticbeanstalk.com/movies/category/${selectedCategory}`);
+    let res = await fetch(`${mainUrl}/movies/category/${selectedCategory}`);
     let data = await res.json();
     setMovieData(data);
     }
