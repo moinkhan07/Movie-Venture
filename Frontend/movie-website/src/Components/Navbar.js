@@ -11,7 +11,7 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
   const [userName,setUserName] = useState("");
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
-  const mainUrl = "";
+  const mainUrl = "http://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
 
   useEffect(() => {
     if (userEmail) {

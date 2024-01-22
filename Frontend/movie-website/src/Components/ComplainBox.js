@@ -4,7 +4,7 @@ import SendIcon from '@mui/icons-material/Send';
 const ComplainBox = () => {
   const [complaint, setComplaint] = useState('');
 
-  const mainUrl = "";
+  const mainUrl = "http://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
 
   const handleComplaintChange = (e) => {
     setComplaint(e.target.value);
