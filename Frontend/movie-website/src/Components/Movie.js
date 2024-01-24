@@ -35,6 +35,18 @@ const Movie = () => {
     const handleRecommendedMovieClick = (movie) => {
       setData(movie);
     };
+
+    const handleDownload480p = () => {
+      window.open(data.movie480pVideoLink, '_blank');
+    };
+
+    const handleDownload720p = () => {
+      window.open(data.movie720pVideoLink, '_blank');
+    };
+    
+    const handleDownload1080p = () => {
+      window.open(data.movie1080pVideoLink, '_blank');
+    };
   
       
   return (
@@ -70,15 +82,15 @@ const Movie = () => {
           <div id='downloadLinks'>
               <div>
                 <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie480QualitySize}`}</p>
-                <button>Download</button>
+                <button onClick={handleDownload480p}>Download</button>
               </div>
               <div>
                 <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie720QualitySize}`}</p>
-                <button>Download</button>
+                <button onClick={handleDownload720p}>Download</button>
               </div>
               <div>
                 <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie1080QualitySize}`}</p>
-                <button>Download</button>
+                <button onClick={handleDownload1080p}>Download</button>
               </div>
             </div>
         </div>
