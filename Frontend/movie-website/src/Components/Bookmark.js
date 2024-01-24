@@ -14,7 +14,7 @@ const Bookmark = () => {
 
   const [bookmarkMovieData,setBookmarkMovieData] = useState([]);
 
-  const mainUrl = "https://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
+  const mainUrl = "http://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
 
   useEffect(() => {
     if (userEmail) {

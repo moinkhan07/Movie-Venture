@@ -37,7 +37,7 @@ const SignUp = () => {
       return;
     }
 
-    const mainUrl = "https://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
+    const mainUrl = "http://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
 
     fetch(`${mainUrl}/users`, {
       method: 'POST',
