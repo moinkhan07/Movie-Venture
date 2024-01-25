@@ -6,7 +6,7 @@ const Movie = () => {
     const [data,setData] = useState([]);
     const [recommendedMovies, setRecommendedMovies] = useState([]);
 
-    const mainUrl = "https://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
+    const mainUrl = "http://movieventureapp-env.eba-svhp2gcp.eu-north-1.elasticbeanstalk.com";
 
     const getMovieData = async ()=>{
       let res = await fetch(`${mainUrl}/movies/${movieId}`);

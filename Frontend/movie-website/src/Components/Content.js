@@ -11,7 +11,7 @@ const Content = ({ searchQuery, selectedCategory }) => {
     setCurrentPage(page);
   };
 
-  const mainUrl = "https://movieventurewebapp.eu-north-1.elasticbeanstalk.com";
+  const mainUrl = "http://movieventureapp-env.eba-svhp2gcp.eu-north-1.elasticbeanstalk.com";
 
   const getMoviesData = async ()=>{
     let res = await fetch(`${mainUrl}/movies`);
