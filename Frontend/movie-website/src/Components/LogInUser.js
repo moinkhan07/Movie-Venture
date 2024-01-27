@@ -32,7 +32,7 @@ const LogInUser = () => {
       return;
     }
 
-    const mainUrl = "http://movieventureapp-env.eba-svhp2gcp.eu-north-1.elasticbeanstalk.com";
+    const mainUrl = "https://movieventure.xyz";
     
     fetch(`${mainUrl}/userlogin`, {
       method: 'POST',

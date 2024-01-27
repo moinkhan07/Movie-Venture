@@ -12,7 +12,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
 
   const [bookmarkId,setBookmarkId] = useState();
 
-  const mainUrl = "http://movieventureapp-env.eba-svhp2gcp.eu-north-1.elasticbeanstalk.com";
+  const mainUrl = "https://movieventure.xyz";
 
   useEffect(() => {
     if (userEmail) {
