@@ -11,7 +11,7 @@ const Content = ({ searchQuery, selectedCategory }) => {
     setCurrentPage(page);
   };
 
-  const mainUrl = "https://movieventure.xyz";
+  const mainUrl = "https://movieventure.xyz/api";
 
   const getMoviesData = async ()=>{
     let res = await fetch(`${mainUrl}/movies`);

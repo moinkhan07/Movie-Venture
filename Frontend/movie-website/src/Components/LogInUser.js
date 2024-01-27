@@ -32,7 +32,7 @@ const LogInUser = () => {
       return;
     }
 
-    const mainUrl = "https://movieventure.xyz";
+    const mainUrl = "https://movieventure.xyz/api";
     
     fetch(`${mainUrl}/userlogin`, {
       method: 'POST',

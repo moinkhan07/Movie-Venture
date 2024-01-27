@@ -11,7 +11,7 @@ const Navbar = ({ onSearch , onSelectCategory}) => {
   const [userName,setUserName] = useState("");
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
-  const mainUrl = "https://movieventure.xyz";
+  const mainUrl = "https://movieventure.xyz/api";
 
   useEffect(() => {
     if (userEmail) {

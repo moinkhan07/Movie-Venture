@@ -37,7 +37,7 @@ const SignUp = () => {
       return;
     }
 
-    const mainUrl = "https://movieventure.xyz";
+    const mainUrl = "https://movieventure.xyz/api";
 
     fetch(`${mainUrl}/users`, {
       method: 'POST',
