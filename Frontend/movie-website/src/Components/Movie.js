@@ -6,7 +6,7 @@ const Movie = () => {
     const [data,setData] = useState([]);
     const [recommendedMovies, setRecommendedMovies] = useState([]);
 
-    const mainUrl = "https://movieventure.xyz/api";
+    const mainUrl = "https://api.movieventure.xyz/api";
 
     const getMovieData = async ()=>{
       let res = await fetch(`${mainUrl}/movies/${movieId}`);

@@ -12,7 +12,7 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
 
   const [bookmarkId,setBookmarkId] = useState();
 
-  const mainUrl = "https://movieventure.xyz/api";
+  const mainUrl = "https://api.movieventure.xyz/api";
 
   useEffect(() => {
     if (userEmail) {

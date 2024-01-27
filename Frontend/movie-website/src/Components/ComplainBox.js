@@ -4,7 +4,7 @@ import SendIcon from '@mui/icons-material/Send';
 const ComplainBox = () => {
   const [complaint, setComplaint] = useState('');
 
-  const mainUrl = "https://movieventure.xyz/api";
+  const mainUrl = "https://api.movieventure.xyz/api";
 
   const handleComplaintChange = (e) => {
     setComplaint(e.target.value);
