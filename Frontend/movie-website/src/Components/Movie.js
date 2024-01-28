@@ -36,17 +36,24 @@ const Movie = () => {
       setData(movie);
     };
 
-    const handleDownload480p = () => {
-      window.open(data.movie480pVideoLink, '_blank');
+    const handleDownload480p = (quality) => {
+      const movieDownload = data[`movie${quality}pVideoLink`];
+      if (movieDownload) {
+        const mainDownloadLink = `https://drive.google.com/uc?id=${driveId}`;
+        window.open(mainDownloadLink, '_blank');
+      } else {
+        // Handle the case when the download link is not available
+        window.alert(`Sorry, download link not available`);
+      }
     };
 
-    const handleDownload720p = () => {
-      window.open(data.movie720pVideoLink, '_blank');
-    };
+    // const handleDownload720p = () => {
+    //   window.open(data.movie720pVideoLink, '_blank');
+    // };
     
-    const handleDownload1080p = () => {
-      window.open(data.movie1080pVideoLink, '_blank');
-    };
+    // const handleDownload1080p = () => {
+    //   window.open(data.movie1080pVideoLink, '_blank');
+    // };
   
       
   return (
@@ -82,15 +89,15 @@ const Movie = () => {
           <div id='downloadLinks'>
               <div>
                 <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie480QualitySize}`}</p>
-                <button onClick={handleDownload480p}>Download</button>
+                <button onClick={() => handleDownload(480)}>Download</button>
               </div>
               <div>
                 <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie720QualitySize}`}</p>
-                <button onClick={handleDownload720p}>Download</button>
+                <button onClick={() => handleDownload(720)}>Download</button>
               </div>
               <div>
                 <p>{`Download ${data.movieTitle} (${data.movieReleaseYear}) (${data.movielangaugesAvailable}) ${data.movie1080QualitySize}`}</p>
-                <button onClick={handleDownload1080p}>Download</button>
+                <button onClick={() => handleDownload(1080)}>Download</button>
               </div>
             </div>
         </div>
