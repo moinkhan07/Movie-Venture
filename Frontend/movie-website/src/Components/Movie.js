@@ -39,7 +39,7 @@ const Movie = () => {
     const handleDownload = (quality) => {
       const movieDownload = data[`movie${quality}pVideoLink`];
       if (movieDownload) {
-        const mainDownloadLink = `https://drive.google.com/uc?id=${driveId}`;
+        const mainDownloadLink = `https://drive.google.com/uc?id=${movieDownload}`;
         window.open(mainDownloadLink, '_blank');
       } else {
         // Handle the case when the download link is not available
