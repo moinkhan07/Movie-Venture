@@ -36,7 +36,7 @@ const Movie = () => {
       setData(movie);
     };
 
-    const handleDownload480p = (quality) => {
+    const handleDownload = (quality) => {
       const movieDownload = data[`movie${quality}pVideoLink`];
       if (movieDownload) {
         const mainDownloadLink = `https://drive.google.com/uc?id=${driveId}`;
