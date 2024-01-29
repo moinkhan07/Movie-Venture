@@ -72,7 +72,7 @@ const Movie = () => {
               <p><b style={{color:"#FEA641"}}> Quality Available:</b> 480p, 720p and 1080p</p>
               <p><b style={{color:"#FEA641"}}> Langauge Available:</b> {data.movielangaugesAvailable}</p>
               <p><b style={{color:"#FEA641"}}> Subtitle:</b> {data.movieSubtitle}</p>
-              <p><b style={{color:"#FEA641"}}> Rating:</b> {data.movieRating} / 5</p>
+              <p><b style={{color:"#FEA641"}}> Rating:</b> {data.movieRating} / 10</p>
               <p><b style={{color:"#FEA641"}}> Category:</b> {data.movieCategory}</p>
               <p><b style={{color:"#FEA641"}}> Summary:</b> {data.movieDescription}</p>
             </div>
