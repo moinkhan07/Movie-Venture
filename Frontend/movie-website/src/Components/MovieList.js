@@ -41,6 +41,8 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
     }
   }
 
+  const sortedMovieData = movieData.slice().sort((a, b) => b.movieReleaseYear - a.movieReleaseYear);
+
   useEffect(()=>{
     getAllBookmarkMovies();
     getBookmarkId();
@@ -114,19 +116,12 @@ const MovieList = ({ currentPage, moviesPerPage, movieData }) => {
   };
   
 
-  
-
-  
-  
-
-
-
   const startIndex = (currentPage - 1) * moviesPerPage;
   const endIndex = startIndex + moviesPerPage;
 
   return (
     <>
-      {movieData.slice(startIndex, endIndex).map((movie, index) => ( 
+      {sortedMovieData.slice(startIndex, endIndex).map((movie, index) => ( 
         <div className='movieDiv' key={index} >
           <div className="ratingdiv">{movie.movieRating}</div>
           <button className="bookmarkMovie" onClick={() => handleBookmarkClick(movie)}>
