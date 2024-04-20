@@ -32,7 +32,8 @@ const LogInUser = () => {
       return;
     }
 
-    const mainUrl = "https://api.movieventure.xyz/api";
+    // const mainUrl = "https://api.movieventure.xyz/api";
+    const mainUrl = "http://localhost:8080";
     
     fetch(`${mainUrl}/userlogin`, {
       method: 'POST',

@@ -14,7 +14,8 @@ const Bookmark = () => {
 
   const [bookmarkMovieData,setBookmarkMovieData] = useState([]);
 
-  const mainUrl = "https://api.movieventure.xyz/api";
+  // const mainUrl = "https://api.movieventure.xyz/api";
+  const mainUrl = "http://localhost:8080";
 
   useEffect(() => {
     if (userEmail) {

@@ -14,7 +14,8 @@ const Content = ({ searchQuery, selectedCategory }) => {
     setCurrentPage(page);
   };
 
-  const mainUrl = "https://api.movieventure.xyz/api";
+  // const mainUrl = "https://api.movieventure.xyz/api";
+  const mainUrl = "http://localhost:8080";
 
   const getMoviesData = async () => {
     try {
